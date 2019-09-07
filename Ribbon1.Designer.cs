@@ -34,23 +34,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tab1 = Factory.CreateRibbonTab();
-            this.group1 = Factory.CreateRibbonGroup();
+            this.tab1 = this.Factory.CreateRibbonTab();
+            this.group1 = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.group3 = this.Factory.CreateRibbonGroup();
+            this.group4 = this.Factory.CreateRibbonGroup();
+            this.group5 = this.Factory.CreateRibbonGroup();
+            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
             // 
-            this.tab1.Name = "tab1";
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tab1.ControlId.OfficeId = "TabAddIns";
             this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.group2);
+            this.tab1.Groups.Add(this.group3);
+            this.tab1.Groups.Add(this.group4);
+            this.tab1.Groups.Add(this.group5);
+            this.tab1.Label = "Генератор схем Excel";
+            this.tab1.Name = "tab1";
             // 
             // group1
             // 
+            this.group1.Items.Add(this.button1);
+            this.group1.Items.Add(this.toggleButton1);
             this.group1.Label = "group1";
             this.group1.Name = "group1";
+            // 
+            // button1
+            // 
+            this.button1.Label = "Вывести название книги";
+            this.button1.Name = "button1";
+            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Button1_Click_1);
+            // 
+            // group2
+            // 
+            this.group2.Label = "group2";
+            this.group2.Name = "group2";
+            // 
+            // group3
+            // 
+            this.group3.Label = "group3";
+            this.group3.Name = "group3";
+            // 
+            // group4
+            // 
+            this.group4.Label = "group4";
+            this.group4.Name = "group4";
+            // 
+            // group5
+            // 
+            this.group5.Label = "group5";
+            this.group5.Name = "group5";
+            // 
+            // toggleButton1
+            // 
+            this.toggleButton1.Label = "Вывести название листа";
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
             // 
             // Ribbon1
             // 
@@ -70,6 +114,12 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton1;
     }
 
     partial class ThisRibbonCollection
