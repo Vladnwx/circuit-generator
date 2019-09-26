@@ -51,13 +51,34 @@ namespace circuit_generator
         public string Source {get; set;} // Источник (начало фидера)
         public string destination {get; set;} // Место назначения (конец фидера)
         public double lenght {get; set;} // Длина кабельной линии
-     }
+        
+        public fider() : this("Неизвестно") // Конструктор без параметров
+    {
+    }
+        public fider(string Source) : this(Source, "Неизвестно" , 10) // Конструктор с указанием только источника
+    {
+    }
+        public fider(string Source, string destination) : this(Source, destination , 10) // Конструктор без длины
+    {
+    }  
+        public fider(string Source, string destination, double lenght) // Конструктор полный
+    {
+        this.Source = Source;
+        this.destination = destination;
+        this.lenght = lenght;    
+    }
+      public void GetInfo() //Информация о фидере в консоль
+    {
+        Console.WriteLine($"Источник: {Source}  Место назначения: {destination} Длина кабельной линии: {lenght}");
+    }
+   }
      public class load ()
     {
         public string number_of_phases {get; set;} // Количество фаз
         public double power {get; set;} // Мощность в кВт
         public double cosphi {get; set;} // Косинус нагрузки 
-        public string Source_load {get; set;} // Местоположение нагрузки 
+        public string Source_load {get; set;} // Местоположение нагрузки
+        public string Type_load {get; set;} // Тип нагрузки (конечная или промежуточная) 
     }
      static const class tabl_odnolin_left () // Таблица слева для однолинейной схемы
     {
@@ -109,7 +130,7 @@ namespace circuit_generator
         const string  property_5 = "Перекос по фазам:" // Свойство №5
         const string  property_6 = "Принять утроенную нагрузку" // Свойство №6
     }
-    static const class tabl_odnolin_nagr () // Таблица потребности кабелей и труб
+    static const class tabl_odnolin_potr () // Таблица потребности кабелей и труб
     {
         const string  property_1 = "Тип/Марка" // Свойство №1
         const string  property_2 = "Длина, м" // Свойство №2
