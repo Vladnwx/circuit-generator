@@ -11,7 +11,8 @@ namespace circuit_generator
 
     public partial class Ribbon1
     {
-       // public event Action ButtonClicked;
+        
+        // public event Action ButtonClicked;
 
 
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
@@ -28,7 +29,27 @@ namespace circuit_generator
                 Microsoft.Office.Tools.Excel.Workbook vstoWorkbook =
                     Globals.Factory.GetVstoObject(nativeWorkbook);
             }
-            MessageBox.Show(nativeWorkbook.Name);
+            Microsoft.Office.Interop.Excel.Worksheet nativeWorksheet =
+                      Globals.ThisAddIn.Application.ActiveSheet; // Переменная nativeWorksheet - текущий открытый лист
+
+            if (nativeWorksheet != null)
+            {
+                Microsoft.Office.Tools.Excel.Worksheet vstoSheet =
+                   Globals.Factory.GetVstoObject(nativeWorksheet);
+            }
+            Tabl_odnolin_left t1 = new Tabl_odnolin_left();
+            Tabl_odnolin_vvod t2 = new Tabl_odnolin_vvod();
+            Tabl_odnolin_nagr t3 = new Tabl_odnolin_nagr();
+            Tabl_odnolin_potr t4 = new Tabl_odnolin_potr();
+
+
+            t1.Draw_excel(nativeWorksheet);
+            t2.Draw_excel(nativeWorksheet);
+            t3.Draw_excel(nativeWorksheet);
+            t4.Draw_excel(nativeWorksheet);
+
+            MessageBox.Show(nativeWorkbook.Name); //Вывод названия текущей книги
+            MessageBox.Show(nativeWorksheet.Name); //Вывод названия текущего листа
         }
 
         private void ToggleButton1_Click(object sender, RibbonControlEventArgs e)
@@ -41,6 +62,8 @@ namespace circuit_generator
                 Microsoft.Office.Tools.Excel.Worksheet vstoSheet =
                    Globals.Factory.GetVstoObject(nativeWorksheet);
             }
+
+           
 
             MessageBox.Show(nativeWorksheet.Name); //Вывод названия текущего листа
         }

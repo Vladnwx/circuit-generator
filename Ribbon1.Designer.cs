@@ -37,11 +37,11 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.button1 = this.Factory.CreateRibbonButton();
+            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.group4 = this.Factory.CreateRibbonGroup();
             this.group5 = this.Factory.CreateRibbonGroup();
-            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -66,9 +66,15 @@
             // 
             // button1
             // 
-            this.button1.Label = "Вывести название книги";
+            this.button1.Label = "Форматировать лист под схему";
             this.button1.Name = "button1";
             this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Button1_Click_1);
+            // 
+            // toggleButton1
+            // 
+            this.toggleButton1.Label = "Вывести название листа";
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
             // 
             // group2
             // 
@@ -89,12 +95,6 @@
             // 
             this.group5.Label = "group5";
             this.group5.Name = "group5";
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.Label = "Вывести название листа";
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
             // 
             // Ribbon1
             // 
