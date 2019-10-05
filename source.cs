@@ -1,10 +1,20 @@
 ﻿namespace circuit_generator
 {
+    
 
-    class Tabl_odnolin_left // Таблица слева для однолинейной схемы
+    class Tabl_odnolin  // Таблица для рисования схемы
     {
-        public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Рисует табличку слева
+        public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
+            Draw_excel_left(worksheet);
+            Draw_excel_vvod(worksheet);
+            Draw_excel_nagr(worksheet);
+            Draw_excel_potr(worksheet);
+
+        }
+        public void Draw_excel_left(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица слева для однолинейной схемы
+        {
+            worksheet.Cells[1, "A"].RowHeight = 100;
             worksheet.Cells[1, "A"].Value = "ИСТОЧНИК ПИТАНИЯ";
             worksheet.Cells[2, "A"].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А"; // Свойство №2
             worksheet.Cells[3, "A"].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А"; // Свойство №3
@@ -36,11 +46,7 @@
             worksheet.Cells[29, "A"].Value = "жильность"; // Свойство №29
             worksheet.Cells[30, "A"].Value = "жильность"; // Свойство №30 
         }
-    }
-
-    class Tabl_odnolin_vvod // Таблица ввода
-    {
-        public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        public void Draw_excel_vvod(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица ввода
         {
             worksheet.Cells[1, "B"].Value = "Руст,кВт"; // Свойство №1
             worksheet.Cells[2, "B"].Value = "Kc"; // Свойство №2
@@ -48,27 +54,20 @@
             worksheet.Cells[4, "B"].Value = "Ip,A"; // Свойство №4
             worksheet.Cells[5, "B"].Value = "cosф"; // Свойство №5}
         }
+        public void Draw_excel_nagr(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица нагрузка по фазам, кВт
+        {
+            worksheet.Cells[1, "C"].Value = "нагрузка по фазам, кВт"; // Свойство №1
+            worksheet.Cells[2, "C"].Value = "L1"; // Свойство №2
+            worksheet.Cells[3, "C"].Value = "L2"; // Свойство №3
+            worksheet.Cells[4, "C"].Value = "L3"; // Свойство №4
+            worksheet.Cells[5, "C"].Value = "Перекос по фазам:"; // Свойство №5
+            worksheet.Cells[6, "C"].Value = "Принять утроенную нагрузку"; // Свойство №6
+        }
+        public void Draw_excel_potr(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица потребности кабелей и труб
+        {
+            worksheet.Cells[1, "D"].Value = "Тип/Марка"; // Свойство №1
+            worksheet.Cells[2, "D"].Value = "Длина, м"; // Свойство №2
+        }
     }
-    class Tabl_odnolin_nagr  // Таблица нагрузка по фазам, кВт
-    {
-        public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet)
-            {
-                worksheet.Cells[1, "C"].Value = "нагрузка по фазам, кВт"; // Свойство №1
-                worksheet.Cells[2, "C"].Value = "L1"; // Свойство №2
-                worksheet.Cells[3, "C"].Value = "L2"; // Свойство №3
-                worksheet.Cells[4, "C"].Value = "L3"; // Свойство №4
-                worksheet.Cells[5, "C"].Value = "Перекос по фазам:"; // Свойство №5
-                worksheet.Cells[6, "C"].Value = "Принять утроенную нагрузку"; // Свойство №6
-            }
 
-        }
-    class Tabl_odnolin_potr // Таблица потребности кабелей и труб
-    {
-        public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet)
-            {
-                worksheet.Cells[1, "D"].Value = "Тип/Марка"; // Свойство №1
-                worksheet.Cells[2, "D"].Value = "Длина, м"; // Свойство №2
-            }
-
-        }
 }

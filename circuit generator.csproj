@@ -175,6 +175,7 @@
   -->
   <ItemGroup>
     <Compile Include="Cable.cs" />
+    <Compile Include="List.cs" />
     <Compile Include="Load.cs" />
     <Compile Include="Fider.cs" />
     <Compile Include="source.cs" />
