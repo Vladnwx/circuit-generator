@@ -1,7 +1,12 @@
-﻿namespace circuit_generator
-{
-    
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Microsoft.Office.Tools.Ribbon;
+using Excel = Microsoft.Office.Interop.Excel;
 
+namespace circuit_generator {    
     class Tabl_odnolin  // Таблица для рисования схемы
     {
         public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet)
@@ -10,11 +15,11 @@
             Draw_excel_vvod(worksheet);
             Draw_excel_nagr(worksheet);
             Draw_excel_potr(worksheet);
-
+            Excel_fix_row(worksheet);
         }
         public void Draw_excel_left(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица слева для однолинейной схемы
         {
-            worksheet.Cells[1, "A"].RowHeight = 100;
+            worksheet.Cells[3, "A"].RowHeight = 100;
             worksheet.Cells[1, "A"].Value = "ИСТОЧНИК ПИТАНИЯ";
             worksheet.Cells[2, "A"].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А"; // Свойство №2
             worksheet.Cells[3, "A"].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А"; // Свойство №3
@@ -68,6 +73,22 @@
             worksheet.Cells[1, "D"].Value = "Тип/Марка"; // Свойство №1
             worksheet.Cells[2, "D"].Value = "Длина, м"; // Свойство №2
         }
+
+        public void Excel_fix_row(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Закрепляет строку
+        {
+            // Fix first row
+            worksheet.Activate();
+            worksheet.Application.ActiveWindow.SplitRow = 2;
+            worksheet.Application.ActiveWindow.FreezePanes = true;
+            // Now apply autofilter
+            Excel.Range firstRow = (Excel.Range)worksheet.Rows[1];
+            firstRow.AutoFilter(1,
+                                Type.Missing,
+                                Excel.XlAutoFilterOperator.xlAnd,
+                                Type.Missing,
+                                true);
+
+       }
     }
 
 }

@@ -178,7 +178,7 @@
     <Compile Include="List.cs" />
     <Compile Include="Load.cs" />
     <Compile Include="Fider.cs" />
-    <Compile Include="source.cs" />
+    <Compile Include="Tabl_odnolin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
