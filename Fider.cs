@@ -36,6 +36,12 @@ namespace circuit_generator
         static const int Fider_truba_lenght_row = 62; // Номер строки, в которую пишется длина трубы кабеля фидера
         static const int Fider_truba_diam_row = 64; // Номер строки, в которую пишется диаметр трубы кабеля фидера
         
+        static const int QF_vvod_row = 8; // Номер строки, в которую пишется вводной автомат
+        static const int QF_type_vvod_row = 9; // Номер строки, в которую пишется тип вводного автомата
+        static const int QF_setpoint_vvod_row = 10; // Номер строки, в которую пишется уставка вводного автомата
+        static const int QF_p_vvod_row = 11; // Номер строки, в которую пишется количество полюсов вводного автомата
+        
+        
         public string Source { get; set; } // Источник (начало фидера)
         public string Destination { get; set; } // Место назначения (конец фидера)
         public double Lenght { get; set; } // Длина кабельной линии
