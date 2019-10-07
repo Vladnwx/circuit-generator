@@ -31,6 +31,7 @@ namespace circuit_generator
                 Microsoft.Office.Tools.Excel.Workbook vstoWorkbook =
                     Globals.Factory.GetVstoObject(nativeWorkbook);
             }
+
             Microsoft.Office.Interop.Excel.Worksheet nativeWorksheet =
                      Globals.ThisAddIn.Application.ActiveSheet; // Переменная nativeWorksheet - текущий открытый лист
 

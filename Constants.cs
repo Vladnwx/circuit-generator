@@ -7,9 +7,10 @@ namespace circuit_generator
 {
     public static class Constants
     {
-        public const int Tabl_start_column = 4; // Номер стобца, с которого начинается таблица схемы (сттолбец Е)
+        public const int Tabl_start_column = 4; // Номер стобца, с которого начинается таблица схемы (столбец Е)
         public const int First_fider_column = Tabl_start_column+2; // Номер стобца, с которого начинается фидер
         public const int fider_width_column = 2; // Число столбцо, которое занимает фидер
+        public const int Tabl_start_row = 4; // Номер строки, с которого начинается таблица схемы (срока 4)
         public const int First_fider_row = 15; // Номер строки, с которой начинается фидер
         public const int Last_fider_row = 64; // Номер строки, которой заканчивается фидер
 
@@ -19,6 +20,7 @@ namespace circuit_generator
         public const int QF_p_fider_row = 18; // Номер строки, в которую пишется количество полюсов автоматов
 
         public const int Fider_info_row = 25; // Номер строки, в которую пишется сборная информация по фидеру
+        public const int Fider_image_row = 26; // Номер строки, в которую пишется изображение на плане
         public const int Fider_phase_row = 27; // Номер строки, в которую пишется номер фазы фидера L1, L2, L3 или L1 L2 L3 (3-х фазная)
         public const int Fider_id_row = 28; // Номер строки, в которую пишется обозначение фидера на планах расположения
         public const int Fider_u_row = 29; // Номер строки, в которую пишется выбранное напряжение на фидере
