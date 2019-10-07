@@ -50,6 +50,8 @@ namespace circuit_generator
             if (nativeWorksheet.Name.Contains("Лист"))
             {
                 MessageBox.Show("Шкаф должен иметь название в имени листа!"); //Вывод названия текущего листа
+
+                
             }
 
             //  MessageBox.Show(nativeWorkbook.Name); //Вывод названия текущей книги

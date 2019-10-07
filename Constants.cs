@@ -45,5 +45,12 @@ namespace circuit_generator
         public const int QF_type_vvod_row = 9; // Номер строки, в которую пишется тип вводного автомата
         public const int QF_setpoint_vvod_row = 10; // Номер строки, в которую пишется уставка вводного автомата
         public const int QF_p_vvod_row = 11; // Номер строки, в которую пишется количество полюсов вводного автомата
+        
+        public const int Tabl_vvod_column = 13; // Номер столбца, в которую пишется табличка ввода
+
+        public const int Tabl_nagr_column = 19; // Номер столбца, в которую пишется табличка нагрузок
+
+        public const int Tabl_potreb_column = 25; // Номер столбца, в которую пишется табличка потребности в кабеле и трубах
+
     }
 }

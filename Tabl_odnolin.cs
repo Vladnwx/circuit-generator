@@ -20,154 +20,117 @@ namespace circuit_generator {
         public void Draw_excel_left(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица слева для однолинейной схемы
         {
 
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].Font.Size = 10;
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].Font.Name = "Arial";
-            
             worksheet.Columns[Constants.Tabl_start_column-3].Hidden = true;
             worksheet.Columns[Constants.Tabl_start_column - 2].Hidden = true;
             worksheet.Columns[Constants.Tabl_start_column - 1].Hidden = true;//Тут нужно скрыть столбцы A, B, C
 
-            //worksheet.Columns[Constants.Tabl_start_column + 2].SplitRow = true; //Тут нужно зафиксировать столбец однолнейной схемы +2
-            worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column +2].Select();
+            worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column + 2].Select();
             Globals.ThisAddIn.Application.ActiveWindow.FreezePanes = true; //зафиксировать столбец и строку
 
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter; // выравнивание по центру по горизонтали
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].VerticalAlignment = Excel.XlHAlign.xlHAlignCenter; // выравнивание по центру по вертикали
-            
-            worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column].Value = "ИСТОЧНИК ПИТАНИЯ";
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Tabl_start_row+3, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E4:F7]
+            Set_excel_and_union(worksheet, "ИСТОЧНИК ПИТАНИЯ", Constants.Tabl_start_row, Constants.Tabl_start_column, 3, 1);
 
-            worksheet.Cells[Constants.Tabl_start_row + 4, Constants.Tabl_start_column].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А";
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row+4, Constants.Tabl_start_column], worksheet.Cells[Constants.Tabl_start_row+10, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E8:F14]
-           
-            worksheet.Cells[Constants.Tabl_start_row+11, Constants.Tabl_start_column].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А";
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row+11, Constants.Tabl_start_column], worksheet.Cells[Constants.Tabl_start_row+16, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E15:F20]
-           
-            worksheet.Cells[21, Constants.Tabl_start_column].Value = "Пускатель магнитный: тип; ток нагревательного элемента, А";
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row+17, Constants.Tabl_start_column], worksheet.Cells[Constants.Tabl_start_row+20, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E21:F24]
+            Set_excel_and_union(worksheet, "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А", Constants.Tabl_start_row+4, Constants.Tabl_start_column, 10, 1);
+
+            Set_excel_and_union(worksheet, "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А", Constants.Tabl_start_row + 11, Constants.Tabl_start_column, 5, 1);
+
+            Set_excel_and_union(worksheet, "Пускатель магнитный: тип; ток нагревательного элемента, А", Constants.Tabl_start_row + 17, Constants.Tabl_start_column, 3, 1);
+
             
-            worksheet.Cells[Constants.Fider_info_row, Constants.Tabl_start_column].Value = "Расчетная нагрузка, кВт - коэффициент мощности - расчетный ток, А - длина участка, м";
             worksheet.Cells[Constants.Fider_info_row, Constants.Tabl_start_column].Orientation = 90;//Тут нужно сделать текст снизу вверх [25, "E"]
+            worksheet.Cells[Constants.Fider_info_row, (Constants.Tabl_start_column + 1)].Orientation = 90; //Тут нужно сделать текст снизу вверх [25, "F"]
+
+            Set_excel_and_union(worksheet, "Расчетная нагрузка, кВт - коэффициент мощности - расчетный ток, А - длина участка, м", Constants.Fider_info_row, Constants.Tabl_start_column, 0, 0);
+
+            Set_excel_and_union(worksheet, "потеря напряжения, %;- марка, сечение проводника", Constants.Fider_info_row, Constants.Tabl_start_column+1, 0, 0);
 
             worksheet.Cells[Constants.Fider_info_row, Constants.Tabl_start_column].RowHeight = 189; // Высота столбца
 
-            worksheet.Cells[Constants.Fider_info_row, (Constants.Tabl_start_column+1)].Value = "потеря напряжения, %;- марка, сечение проводника";
-            worksheet.Cells[Constants.Fider_info_row, (Constants.Tabl_start_column + 1)].Orientation = 90; //Тут нужно сделать текст снизу вверх [25, "F"]
+            Set_excel_and_union(worksheet, "Условное обозначение на плане", Constants.Fider_image_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_image_row, Constants.Tabl_start_column].Value = "Условное обозначение на плане";
-            worksheet.Range[worksheet.Cells[Constants.Fider_image_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_image_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E26:F26]
-            
-            worksheet.Cells[Constants.Fider_phase_row, Constants.Tabl_start_column].Value = "Распределение по фазам";
-            worksheet.Range[worksheet.Cells[Constants.Fider_phase_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_phase_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E27:F27]
-            
-            worksheet.Cells[Constants.Fider_id_row, Constants.Tabl_start_column].Value = "Номер по плану";
-            worksheet.Range[worksheet.Cells[Constants.Fider_id_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_id_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E28:F28]
-           
-            worksheet.Cells[Constants.Fider_u_row, Constants.Tabl_start_column].Value = "U, В";
-            worksheet.Range[worksheet.Cells[Constants.Fider_u_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_u_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E29:F29]
-                                                                                                                                                                                    //Тут нужно выделить синим ячеки [E29:F29]
+            Set_excel_and_union(worksheet, "Распределение по фазам", Constants.Fider_phase_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_p_row, Constants.Tabl_start_column].Value = "Ррасч. кВт";
-            worksheet.Range[worksheet.Cells[Constants.Fider_p_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_p_row, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E30:F30]
-            //Тут нужно выделить синим ячеки [E30:F30]
+            Set_excel_and_union(worksheet, "Номер по плану", Constants.Fider_id_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_cos_row, Constants.Tabl_start_column].Value = "cos f";
+            Set_excel_and_union(worksheet, "U, В", Constants.Fider_u_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Range[worksheet.Cells[Constants.Fider_cos_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_cos_row, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E31:F31]
-            //Тут нужно выделить синим ячеки [E31:F31]
+            Set_excel_and_union(worksheet, "Ррасч., кВт", Constants.Fider_p_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_i_row, Constants.Tabl_start_column].Value = "Ток Iрасч., А";
-            worksheet.Range[worksheet.Cells[Constants.Fider_i_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_i_row, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E32:F32]
+            Set_excel_and_union(worksheet, "cos f", Constants.Fider_cos_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_name_potr_row, Constants.Tabl_start_column].Value = "Наименование потребителя";
-            worksheet.Range[worksheet.Cells[Constants.Fider_name_potr_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_name_potr_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E33:F33]
-                                                                                                                                                                                                  //Тут нужно выделить синим ячеки [E33:F33]
+            Set_excel_and_union(worksheet, "Ток Iрасч., А", Constants.Fider_i_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_lenght_row, Constants.Tabl_start_column].Value = "Длинна кабельной трассы, м.";
-            worksheet.Range[worksheet.Cells[Constants.Fider_lenght_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_lenght_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E37:F37]
-            //Тут нужно выделить синим ячеки [E37:F37]
+            Set_excel_and_union(worksheet, "Наименование потребителя", Constants.Fider_name_potr_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_poteri_row, Constants.Tabl_start_column].Value = "Потери, %";
-            worksheet.Range[worksheet.Cells[Constants.Fider_poteri_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_poteri_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки
+            Set_excel_and_union(worksheet, "Длинна кабельной трассы, м.", Constants.Fider_lenght_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_cabel_row, Constants.Tabl_start_column].Value = "кабель, мм.кв.";
-            worksheet.Range[worksheet.Cells[Constants.Fider_cabel_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_cabel_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки
+            Set_excel_and_union(worksheet, "Потери, %", Constants.Fider_poteri_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_start_row, Constants.Tabl_start_column].Value = "Начало кабельной линии";
-            worksheet.Range[worksheet.Cells[Constants.Fider_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_start_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E47:F47]
-           
-            worksheet.Cells[Constants.Fider_finish_row, Constants.Tabl_start_column].Value = "Конец кабельной линии";
-            worksheet.Range[worksheet.Cells[Constants.Fider_finish_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_finish_row, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E48:F48]
-            //Тут нужно выделить синим ячеки [E48:F48]
+            Set_excel_and_union(worksheet, "кабель, мм.кв.", Constants.Fider_cabel_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_cable_marka_row, Constants.Tabl_start_column].Value = "марка кабеля";
-            worksheet.Range[worksheet.Cells[Constants.Fider_cable_marka_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_cable_marka_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E50:F50]
-            //Тут нужно выделить синим ячеки [E49:F49]
+            Set_excel_and_union(worksheet, "Начало кабельной линии", Constants.Fider_start_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_cable_metal_type_row, Constants.Tabl_start_column].Value = "CU / Al";
-            worksheet.Range[worksheet.Cells[Constants.Fider_cable_metal_type_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_cable_metal_type_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E52:F52]
-            //Тут нужно выделить синим ячеки [E52:F52]
+            Set_excel_and_union(worksheet, "Конец кабельной линии", Constants.Fider_finish_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_prokladka_type_row, Constants.Tabl_start_column].Value = "Способ прокладки";
-            worksheet.Range[worksheet.Cells[Constants.Fider_prokladka_type_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_prokladka_type_row, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E54:F54]
-            //Тут нужно выделить синим ячеки [E54:F54]
+            Set_excel_and_union(worksheet, "марка кабеля", Constants.Fider_cable_marka_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_cabel_jila_row, Constants.Tabl_start_column].Value = "Жильность";
-            worksheet.Range[worksheet.Cells[Constants.Fider_cabel_jila_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_cabel_jila_row, Constants.Tabl_start_column + 1]].Merge(); //Тут нужно обединить ячеки [E56:F56]
-            //Тут нужно выделить синим ячеки [E56:F56]
+            Set_excel_and_union(worksheet, "CU / Al", Constants.Fider_cable_metal_type_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_truba_type_row, Constants.Tabl_start_column].Value = "Тип трубы";
-            worksheet.Range[worksheet.Cells[Constants.Fider_truba_type_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_truba_type_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E60:F60]
-            //Тут нужно выделить синим ячеки [E60:F60]
+            Set_excel_and_union(worksheet, "Способ прокладки", Constants.Fider_prokladka_type_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_truba_lenght_row, Constants.Tabl_start_column].Value = "Длинна трубы, м";
-            worksheet.Range[worksheet.Cells[Constants.Fider_truba_lenght_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_truba_lenght_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E62:F62]
-            //Тут нужно выделить синим ячеки [E62:F62]
+            Set_excel_and_union(worksheet, "Жильность", Constants.Fider_cabel_jila_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Cells[Constants.Fider_truba_diam_row, Constants.Tabl_start_column].Value = "Диаметр трубы";
-            worksheet.Range[worksheet.Cells[Constants.Fider_truba_diam_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Fider_truba_diam_row, Constants.Tabl_start_column + 1]].Merge();//Тут нужно обединить ячеки [E64:F64]
+            Set_excel_and_union(worksheet, "Тип трубы", Constants.Fider_truba_type_row, Constants.Tabl_start_column, 0, 1);
 
-            // worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].EntireRow.AutoFit();   // Автоподбор высоты строки   
+            Set_excel_and_union(worksheet, "Длинна трубы, м", Constants.Fider_truba_lenght_row, Constants.Tabl_start_column, 0, 1);
 
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous; //Тут нужно нарисовать все границы для ячеек [E4:F33]
-
-            //Перенос текста в конце!
-            worksheet.Range[worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column], worksheet.Cells[Constants.Last_fider_row, Constants.Tabl_start_column + 1]].WrapText = true; // перенос текста
+            Set_excel_and_union(worksheet, "Диаметр трубы", Constants.Fider_truba_diam_row, Constants.Tabl_start_column, 0, 1);
+                                    
         }
         public void Draw_excel_vvod(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица ввода
         {
             //Тут нужно вставить название шкафа из названия листа в ячейку [M6]
-            //Тут нужно объеденить ячейки [M6:N6]
-            worksheet.Cells[7, "M"].Value = "Руст,кВт"; 
-            worksheet.Cells[8, "M"].Value = "Kc"; 
-            worksheet.Cells[9, "M"].Value = "Рр,кВт"; 
-            worksheet.Cells[10, "M"].Value = "Ip,A"; 
-            worksheet.Cells[11, "M"].Value = "cosф"; 
-            //Тут нарисовать границы ячейкам [M6:N11]
+            Set_excel_and_union(worksheet, worksheet.Name, Constants.Tabl_start_row , Constants.Tabl_vvod_column, 0, 2);
+            Set_excel_and_union(worksheet, "Руст,кВт", Constants.Tabl_start_row + 1, Constants.Tabl_vvod_column, 0, 2);
+            Set_excel_and_union(worksheet, "Kc", Constants.Tabl_start_row + 2, Constants.Tabl_vvod_column, 0, 0);
+            Set_excel_and_union(worksheet, "Рр,кВт", Constants.Tabl_start_row + 3, Constants.Tabl_vvod_column, 0, 0);
+            Set_excel_and_union(worksheet, "Ip,A", Constants.Tabl_start_row + 4, Constants.Tabl_vvod_column, 0, 0);
+            Set_excel_and_union(worksheet, "cos f", Constants.Tabl_start_row + 5, Constants.Tabl_vvod_column, 0, 0);
+
         }
         public void Draw_excel_nagr(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица нагрузка по фазам, кВт
         {
-            worksheet.Cells[5, "S"].Value = "нагрузка по фазам, кВт"; 
-            //Тут нужно объеденить ячейки [S5:U6]
-            worksheet.Cells[6, "S"].Value = "L1"; 
-            worksheet.Cells[6, "T"].Value = "L2"; 
-            worksheet.Cells[6, "U"].Value = "L3"; 
-            worksheet.Cells[8, "S"].Value = "Перекос по фазам:";
-            //Тут нужно объеденить ячейки [S7:U7]
-            //Тут нужно объеденить ячейки [S9:U9]
+            Set_excel_and_union(worksheet, "нагрузка по фазам, кВт", Constants.Tabl_start_row, Constants.Tabl_nagr_column, 0, 2);
+
+            Set_excel_and_union(worksheet, "L1", Constants.Tabl_start_row + 1, Constants.Tabl_nagr_column, 0, 0);
+            Set_excel_and_union(worksheet, "L2", Constants.Tabl_start_row + 1, Constants.Tabl_nagr_column + 1, 0, 0);
+            Set_excel_and_union(worksheet, "L3", Constants.Tabl_start_row + 1, Constants.Tabl_nagr_column + 2, 0, 0);
+
+            Set_excel_and_union(worksheet, "Перекос по фазам:", Constants.Tabl_start_row + 3, Constants.Tabl_nagr_column, 0, 2);
+
+            Set_excel_and_union(worksheet, "Принять утроенную нагрузку", Constants.Tabl_start_row + 5, Constants.Tabl_nagr_column, 0, 2);
+
             //Тут нужно добавить условие появления надписи утроенная нагрузка или симметричная нагрузка [S10:U10]
-            worksheet.Cells[10, "S"].Value = "Принять утроенную нагрузку";
-            //Тут нужно объеденить ячейки [S10:U10]
-            //Тут нарисовать границы ячейкам [S5:U10]
-            
         }
         public void Draw_excel_potr(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица потребности кабелей и труб
         {
-            worksheet.Cells[3, "Y"].Value = "Потребность труб и кабелей, м"; 
-            //Тут нужно объеденить ячейки [Y3:Z3]
-            worksheet.Cells[4, "Y"].Value = "Тип/Марка"; 
-            worksheet.Cells[4, "Z"].Value = "Длина, м";
-            //Тут нарисовать границы ячейкам [Y3:Z4]
+            Set_excel_and_union(worksheet, "Потребность труб и кабелей, м", Constants.Tabl_start_row , Constants.Tabl_potreb_column, 1, 0);
+
+            Set_excel_and_union(worksheet, "Тип/Марка", Constants.Tabl_start_row, Constants.Tabl_potreb_column + 1, 0, 0);
+            Set_excel_and_union(worksheet, "Длина, м", Constants.Tabl_start_row + 1, Constants.Tabl_potreb_column + 1, 0, 0);
+           
+        }
+
+        public void Set_excel_and_union(Microsoft.Office.Interop.Excel.Worksheet worksheet, string s, int i , int j, int k, int l) // worksheet - таблица, s-строка для записи ,  i - номер строки для записи , j - номер столбца для записи, k - число строк для объединения,  l - число столбцов для объединения
+        {
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i, j + l]].Font.Size = 10;
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i, j + l]].Font.Name = "Arial";
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i, j + l]].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter; // выравнивание по центру по горизонтали
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i, j + l]].VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i, j + l]].Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous; //Тут нужно нарисовать все границы для ячеек
+            worksheet.Cells[i, j].Value = s;
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i+k,j + l]].Merge();
+            worksheet.Rows[i].AutoFit();
+            worksheet.Range[worksheet.Cells[i, j], worksheet.Cells[i, j + l]].WrapText = true; // перенос текста
         }
 
     }
