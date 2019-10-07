@@ -16,76 +16,76 @@ namespace circuit_generator {
             Draw_excel_vvod(worksheet);
             Draw_excel_nagr(worksheet);
             Draw_excel_potr(worksheet);
-            Excel_fix_row(worksheet);
+           // Excel_fix_row(worksheet);
         }
         public void Draw_excel_left(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица слева для однолинейной схемы
         {
             //Тут нужно изменить стиль обычный на шрифт типа Arial размер 10 или вынести в отдельный модуль
             //Тут нужно скрыть столбцы A, B, C
-            worksheet.Cells[4, "E"].Value = "ИСТОЧНИК ПИТАНИЯ";
+            worksheet.Cells[4, Constants.Tabl_start_column].Value = "ИСТОЧНИК ПИТАНИЯ";
             //Тут нужно обединить ячеки [E4:F7]
-            worksheet.Cells[8, "E"].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А"; 
+            worksheet.Cells[8, Constants.Tabl_start_column].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А"; 
            //Тут нужно обединить ячеки [E8:F14]
-            worksheet.Cells[15, "E"].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А"; 
+            worksheet.Cells[15, Constants.Tabl_start_column].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А"; 
             //Тут нужно обединить ячеки [E15:F20]
-            worksheet.Cells[21, "E"].Value = "Пускатель магнитный: тип; ток нагревательного элемента, А"; 
+            worksheet.Cells[21, Constants.Tabl_start_column].Value = "Пускатель магнитный: тип; ток нагревательного элемента, А";
             //Тут нужно обединить ячеки [E21:F24]
-            worksheet.Cells[25, "E"].Value = "- Расчетная нагрузка, кВт - коэффициент мощности - расчетный ток, А - длина участка, м";
+            worksheet.Cells[Constants.Fider_info_row, Constants.Tabl_start_column].Value = "- Расчетная нагрузка, кВт - коэффициент мощности - расчетный ток, А - длина участка, м";
             //Тут нужно сделать текст снизу вверх [25, "E"]
-            worksheet.Cells[25, "E"].RowHeight = 189;
-            worksheet.Cells[25, "F"].Value = "- потеря напряжения, %;- марка, сечение проводника"; 
+            worksheet.Cells[Constants.Fider_info_row, Constants.Tabl_start_column].RowHeight = 189;
+            worksheet.Cells[Constants.Fider_info_row, (Constants.Tabl_start_column+1)].Value = "- потеря напряжения, %;- марка, сечение проводника"; 
             //Тут нужно сделать текст снизу вверх [25, "F"]
-            worksheet.Cells[26, "E"].Value = "УСЛОВНОЕ ОБОЗНАЧЕНИЕ НА ПЛАНЕ";
+            worksheet.Cells[26, Constants.Tabl_start_column].Value = "УСЛОВНОЕ ОБОЗНАЧЕНИЕ НА ПЛАНЕ";
             //Тут нужно обединить ячеки [E26:F26]
-            worksheet.Cells[27, "E"].Value = "РАСПРЕДЕЛЕНИЕ ПО ФАЗАМ";
+            worksheet.Cells[Constants.Fider_phase_row, Constants.Tabl_start_column].Value = "РАСПРЕДЕЛЕНИЕ ПО ФАЗАМ";
             //Тут нужно обединить ячеки [E27:F27]
-            worksheet.Cells[28, "E"].Value = "НОМЕР ПО ПЛАНУ";
+            worksheet.Cells[Constants.Fider_id_row, Constants.Tabl_start_column].Value = "НОМЕР ПО ПЛАНУ";
             //Тут нужно обединить ячеки [E28:F28]
-            worksheet.Cells[29, "E"].Value = "U, В";
+            worksheet.Cells[Constants.Fider_u_row, Constants.Tabl_start_column].Value = "U, В";
             //Тут нужно обединить ячеки [E29:F29]
             //Тут нужно выделить синим ячеки [E29:F29]
-            worksheet.Cells[30, "E"].Value = "Ррасч. кВт";
+            worksheet.Cells[Constants.Fider_p_row, Constants.Tabl_start_column].Value = "Ррасч. кВт";
             //Тут нужно обединить ячеки [E30:F30]
             //Тут нужно выделить синим ячеки [E30:F30]
-            worksheet.Cells[31, "E"].Value = "cos f";
+            worksheet.Cells[Constants.Fider_cos_row, Constants.Tabl_start_column].Value = "cos f";
             //Тут нужно обединить ячеки [E31:F31]
             //Тут нужно выделить синим ячеки [E31:F31]
-            worksheet.Cells[32, "E"].Value = "Ток Iрасч., А";
+            worksheet.Cells[Constants.Fider_i_row, Constants.Tabl_start_column].Value = "Ток Iрасч., А";
             //Тут нужно обединить ячеки [E32:F32]
-            worksheet.Cells[33, "E"].Value = "Наименование потребителя";
+            worksheet.Cells[Constants.Fider_name_potr_row, Constants.Tabl_start_column].Value = "Наименование потребителя";
             //Тут нужно обединить ячеки [E33:F33]
             //Тут нужно выделить синим ячеки [E33:F33]
             //Тут нужно нарисовать все границы для ячеек [E4:F33]
-            worksheet.Cells[37, "E"].Value = "Длинна кабельной трассы, м."; 
+            worksheet.Cells[Constants.Fider_lenght_row, Constants.Tabl_start_column].Value = "Длинна кабельной трассы, м."; 
             //Тут нужно обединить ячеки [E37:F37]
             //Тут нужно выделить синим ячеки [E37:F37]
-            worksheet.Cells[39, "E"].Value = "Потери, %"; 
-            worksheet.Cells[41, "E"].Value = "кабель, мм.кв.";  
-            worksheet.Cells[47, "E"].Value = "Начало кабельной линии";
+            worksheet.Cells[Constants.Fider_poteri_row, Constants.Tabl_start_column].Value = "Потери, %"; 
+            worksheet.Cells[Constants.Fider_cabel_row, Constants.Tabl_start_column].Value = "кабель, мм.кв.";  
+            worksheet.Cells[Constants.Fider_start_row, Constants.Tabl_start_column].Value = "Начало кабельной линии";
             //Тут нужно обединить ячеки [E47:F47]
             //Тут нужно выделить синим ячеки [E47:F47]
-            worksheet.Cells[48, "E"].Value = "Конец кабельной линии";
+            worksheet.Cells[Constants.Fider_finish_row, Constants.Tabl_start_column].Value = "Конец кабельной линии";
             //Тут нужно обединить ячеки [E48:F48]
             //Тут нужно выделить синим ячеки [E48:F48]
-            worksheet.Cells[50, "E"].Value = "марка кабеля";
+            worksheet.Cells[Constants.Fider_cable_marka_row, Constants.Tabl_start_column].Value = "марка кабеля";
             //Тут нужно обединить ячеки [E50:F50]
             //Тут нужно выделить синим ячеки [E49:F49]
-            worksheet.Cells[52, "E"].Value = "CU / Al";
+            worksheet.Cells[Constants.Fider_cable_metal_type_row, Constants.Tabl_start_column].Value = "CU / Al";
             //Тут нужно обединить ячеки [E52:F52]
             //Тут нужно выделить синим ячеки [E52:F52]
-            worksheet.Cells[54, "E"].Value = "Способ прокладки";
+            worksheet.Cells[Constants.Fider_prokladka_type_row, Constants.Tabl_start_column].Value = "Способ прокладки";
             //Тут нужно обединить ячеки [E54:F54]
             //Тут нужно выделить синим ячеки [E54:F54]
-            worksheet.Cells[56, "E"].Value = "Жильность";
+            worksheet.Cells[Constants.Fider_cabel_jila_row, Constants.Tabl_start_column].Value = "Жильность";
             //Тут нужно обединить ячеки [E56:F56]
             //Тут нужно выделить синим ячеки [E56:F56]
-            worksheet.Cells[60, "E"].Value = "Тип трубы";
+            worksheet.Cells[Constants.Fider_truba_type_row, Constants.Tabl_start_column].Value = "Тип трубы";
             //Тут нужно обединить ячеки [E60:F60]
             //Тут нужно выделить синим ячеки [E60:F60]
-            worksheet.Cells[62, "E"].Value = "Длинна трубы, м";
+            worksheet.Cells[Constants.Fider_truba_lenght_row, Constants.Tabl_start_column].Value = "Длинна трубы, м";
             //Тут нужно обединить ячеки [E62:F62]
             //Тут нужно выделить синим ячеки [E62:F62]
-            worksheet.Cells[64, "E"].Value = "Диаметр трубы";
+            worksheet.Cells[Constants.Fider_truba_diam_row, Constants.Tabl_start_column].Value = "Диаметр трубы";
             //Тут нужно обединить ячеки [E64:F64]
         }
         public void Draw_excel_vvod(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица ввода

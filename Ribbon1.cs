@@ -39,6 +39,8 @@ namespace circuit_generator
                 Microsoft.Office.Tools.Excel.Worksheet vstoSheet =
                    Globals.Factory.GetVstoObject(nativeWorksheet);
             }
+
+            
             Tabl_odnolin t1 = new Tabl_odnolin();
             
 
