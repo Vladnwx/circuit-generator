@@ -9,6 +9,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 namespace circuit_generator {    
     class Tabl_odnolin  // Таблица для рисования схемы
     {
+        //Нужно добавить перегрузку в зависимости от типа передаваемого аргумента. Сейчас передается таблица Excel. Нужно добавить тот же способ для передачи приложения или листа Autocad
         public void Draw_excel(Microsoft.Office.Interop.Excel.Worksheet worksheet)
         {
             Draw_excel_left(worksheet);
@@ -19,64 +20,114 @@ namespace circuit_generator {
         }
         public void Draw_excel_left(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица слева для однолинейной схемы
         {
-            worksheet.Cells[3, "A"].RowHeight = 100;
-            worksheet.Cells[1, "A"].Value = "ИСТОЧНИК ПИТАНИЯ";
-            worksheet.Cells[2, "A"].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А"; // Свойство №2
-            worksheet.Cells[3, "A"].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А"; // Свойство №3
-            worksheet.Cells[4, "A"].Value = "Пускатель магнитный: тип; ток нагревательного элемента, А"; // Свойство №4
-            worksheet.Cells[5, "A"].Value = "- Расчетная нагрузка, кВт - коэффициент мощности - расчетный ток, А - длина участка, м"; // Свойство №5
-            worksheet.Cells[6, "A"].Value = "- потеря напряжения, %;- марка, сечение проводника"; // Свойство №6
-            worksheet.Cells[7, "A"].Value = "УСЛОВНОЕ ОБОЗНАЧЕНИЕ НА ПЛАНЕ"; // Свойство №7
-            worksheet.Cells[8, "A"].Value = "РАСПРЕДЕЛЕНИЕ ПО ФАЗАМ"; // Свойство №8
-            worksheet.Cells[9, "A"].Value = "НОМЕР ПО ПЛАНУ"; // Свойство №9
-            worksheet.Cells[10, "A"].Value = "U, В"; // Свойство №10
-            worksheet.Cells[11, "A"].Value = "Ррасч. кВт"; // Свойство №11
-            worksheet.Cells[12, "A"].Value = "cos f"; // Свойство №12
-            worksheet.Cells[13, "A"].Value = "Ток Iрасч., А"; // Свойство №13
-            worksheet.Cells[14, "A"].Value = "Наименование потребителя"; // Свойство №14
-            worksheet.Cells[15, "A"].Value = "Длинна кабельной трассы, м."; // Свойство №15 
-            worksheet.Cells[16, "A"].Value = "Потери, %"; // Свойство №16 
-            worksheet.Cells[17, "A"].Value = "кабель, мм.кв."; // Свойство №17 
-            worksheet.Cells[18, "A"].Value = "Начало кабельной линии"; // Свойство №18 
-            worksheet.Cells[19, "A"].Value = "Конец кабельной линии"; // Свойство №19 
-            worksheet.Cells[20, "A"].Value = "марка кабеля"; // Свойство №20 
-            worksheet.Cells[21, "A"].Value = "Способ прокладки"; // Свойство №21 
-            worksheet.Cells[22, "A"].Value = "Тип трубы"; // Свойство №22
-            worksheet.Cells[23, "A"].Value = "Длинна трубы, м"; // Свойство №23 
-            worksheet.Cells[24, "A"].Value = "Диаметр трубы"; // Свойство №24 
-            worksheet.Cells[25, "A"].Value = "жильность"; // Свойство №25 
-            worksheet.Cells[26, "A"].Value = "жильность"; // Свойство №26 
-            worksheet.Cells[27, "A"].Value = "жильность"; // Свойство №27 
-            worksheet.Cells[28, "A"].Value = "жильность"; // Свойство №28 
-            worksheet.Cells[29, "A"].Value = "жильность"; // Свойство №29
-            worksheet.Cells[30, "A"].Value = "жильность"; // Свойство №30 
+            //Тут нужно изменить стиль обычный на шрифт типа Arial размер 10 или вынести в отдельный модуль
+            //Тут нужно скрыть столбцы A, B, C
+            worksheet.Cells[4, "E"].Value = "ИСТОЧНИК ПИТАНИЯ";
+            //Тут нужно обединить ячеки [E4:F7]
+            worksheet.Cells[8, "E"].Value = "Распределительный пункт: номер; тип; установленная и расчетная мощность, кВт. Аппарат на вводе: тип; ток, А"; 
+           //Тут нужно обединить ячеки [E8:F14]
+            worksheet.Cells[15, "E"].Value = "Выключатель автоматический или предохранитель: тип; ток расцепителя или плавкой вставки, А"; 
+            //Тут нужно обединить ячеки [E15:F20]
+            worksheet.Cells[21, "E"].Value = "Пускатель магнитный: тип; ток нагревательного элемента, А"; 
+            //Тут нужно обединить ячеки [E21:F24]
+            worksheet.Cells[25, "E"].Value = "- Расчетная нагрузка, кВт - коэффициент мощности - расчетный ток, А - длина участка, м";
+            //Тут нужно сделать текст снизу вверх [25, "E"]
+            worksheet.Cells[25, "E"].RowHeight = 189;
+            worksheet.Cells[25, "F"].Value = "- потеря напряжения, %;- марка, сечение проводника"; 
+            //Тут нужно сделать текст снизу вверх [25, "F"]
+            worksheet.Cells[26, "E"].Value = "УСЛОВНОЕ ОБОЗНАЧЕНИЕ НА ПЛАНЕ";
+            //Тут нужно обединить ячеки [E26:F26]
+            worksheet.Cells[27, "E"].Value = "РАСПРЕДЕЛЕНИЕ ПО ФАЗАМ";
+            //Тут нужно обединить ячеки [E27:F27]
+            worksheet.Cells[28, "E"].Value = "НОМЕР ПО ПЛАНУ";
+            //Тут нужно обединить ячеки [E28:F28]
+            worksheet.Cells[29, "E"].Value = "U, В";
+            //Тут нужно обединить ячеки [E29:F29]
+            //Тут нужно выделить синим ячеки [E29:F29]
+            worksheet.Cells[30, "E"].Value = "Ррасч. кВт";
+            //Тут нужно обединить ячеки [E30:F30]
+            //Тут нужно выделить синим ячеки [E30:F30]
+            worksheet.Cells[31, "E"].Value = "cos f";
+            //Тут нужно обединить ячеки [E31:F31]
+            //Тут нужно выделить синим ячеки [E31:F31]
+            worksheet.Cells[32, "E"].Value = "Ток Iрасч., А";
+            //Тут нужно обединить ячеки [E32:F32]
+            worksheet.Cells[33, "E"].Value = "Наименование потребителя";
+            //Тут нужно обединить ячеки [E33:F33]
+            //Тут нужно выделить синим ячеки [E33:F33]
+            //Тут нужно нарисовать все границы для ячеек [E4:F33]
+            worksheet.Cells[37, "E"].Value = "Длинна кабельной трассы, м."; 
+            //Тут нужно обединить ячеки [E37:F37]
+            //Тут нужно выделить синим ячеки [E37:F37]
+            worksheet.Cells[39, "E"].Value = "Потери, %"; 
+            worksheet.Cells[41, "E"].Value = "кабель, мм.кв.";  
+            worksheet.Cells[47, "E"].Value = "Начало кабельной линии";
+            //Тут нужно обединить ячеки [E47:F47]
+            //Тут нужно выделить синим ячеки [E47:F47]
+            worksheet.Cells[48, "E"].Value = "Конец кабельной линии";
+            //Тут нужно обединить ячеки [E48:F48]
+            //Тут нужно выделить синим ячеки [E48:F48]
+            worksheet.Cells[50, "E"].Value = "марка кабеля";
+            //Тут нужно обединить ячеки [E50:F50]
+            //Тут нужно выделить синим ячеки [E49:F49]
+            worksheet.Cells[52, "E"].Value = "CU / Al";
+            //Тут нужно обединить ячеки [E52:F52]
+            //Тут нужно выделить синим ячеки [E52:F52]
+            worksheet.Cells[54, "E"].Value = "Способ прокладки";
+            //Тут нужно обединить ячеки [E54:F54]
+            //Тут нужно выделить синим ячеки [E54:F54]
+            worksheet.Cells[56, "E"].Value = "Жильность";
+            //Тут нужно обединить ячеки [E56:F56]
+            //Тут нужно выделить синим ячеки [E56:F56]
+            worksheet.Cells[60, "E"].Value = "Тип трубы";
+            //Тут нужно обединить ячеки [E60:F60]
+            //Тут нужно выделить синим ячеки [E60:F60]
+            worksheet.Cells[62, "E"].Value = "Длинна трубы, м";
+            //Тут нужно обединить ячеки [E62:F62]
+            //Тут нужно выделить синим ячеки [E62:F62]
+            worksheet.Cells[64, "E"].Value = "Диаметр трубы";
+            //Тут нужно обединить ячеки [E64:F64]
         }
         public void Draw_excel_vvod(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица ввода
         {
-            worksheet.Cells[1, "B"].Value = "Руст,кВт"; // Свойство №1
-            worksheet.Cells[2, "B"].Value = "Kc"; // Свойство №2
-            worksheet.Cells[3, "B"].Value = "Рр,кВт"; // Свойство №3
-            worksheet.Cells[4, "B"].Value = "Ip,A"; // Свойство №4
-            worksheet.Cells[5, "B"].Value = "cosф"; // Свойство №5}
+            //Тут нужно вставить название шкафа из названия листа в ячейку [M6]
+            //Тут нужно объеденить ячейки [M6:N6]
+            worksheet.Cells[7, "M"].Value = "Руст,кВт"; 
+            worksheet.Cells[8, "M"].Value = "Kc"; 
+            worksheet.Cells[9, "M"].Value = "Рр,кВт"; 
+            worksheet.Cells[10, "M"].Value = "Ip,A"; 
+            worksheet.Cells[11, "M"].Value = "cosф"; 
+            //Тут нарисовать границы ячейкам [M6:N11]
         }
         public void Draw_excel_nagr(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица нагрузка по фазам, кВт
         {
-            worksheet.Cells[1, "C"].Value = "нагрузка по фазам, кВт"; // Свойство №1
-            worksheet.Cells[2, "C"].Value = "L1"; // Свойство №2
-            worksheet.Cells[3, "C"].Value = "L2"; // Свойство №3
-            worksheet.Cells[4, "C"].Value = "L3"; // Свойство №4
-            worksheet.Cells[5, "C"].Value = "Перекос по фазам:"; // Свойство №5
-            worksheet.Cells[6, "C"].Value = "Принять утроенную нагрузку"; // Свойство №6
+            worksheet.Cells[5, "S"].Value = "нагрузка по фазам, кВт"; 
+            //Тут нужно объеденить ячейки [S5:U6]
+            worksheet.Cells[6, "S"].Value = "L1"; 
+            worksheet.Cells[6, "T"].Value = "L2"; 
+            worksheet.Cells[6, "U"].Value = "L3"; 
+            worksheet.Cells[8, "S"].Value = "Перекос по фазам:";
+            //Тут нужно объеденить ячейки [S7:U7]
+            //Тут нужно объеденить ячейки [S9:U9]
+            //Тут нужно добавить условие появления надписи утроенная нагрузка или симметричная нагрузка [S10:U10]
+            worksheet.Cells[10, "S"].Value = "Принять утроенную нагрузку";
+            //Тут нужно объеденить ячейки [S10:U10]
+            //Тут нарисовать границы ячейкам [S5:U10]
+            
         }
         public void Draw_excel_potr(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица потребности кабелей и труб
         {
-            worksheet.Cells[1, "D"].Value = "Тип/Марка"; // Свойство №1
-            worksheet.Cells[2, "D"].Value = "Длина, м"; // Свойство №2
+            worksheet.Cells[3, "Y"].Value = "Потребность труб и кабелей, м"; 
+            //Тут нужно объеденить ячейки [Y3:Z3]
+            worksheet.Cells[4, "Y"].Value = "Тип/Марка"; 
+            worksheet.Cells[4, "Z"].Value = "Длина, м";
+            //Тут нарисовать границы ячейкам [Y3:Z4]
         }
 
         public void Excel_fix_row(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Закрепляет строку
         {
             // Fix first row
+            // Тут нужно убрать фильтрацию и закрепить строку начиная со второй и столбец начиная с F
             worksheet.Activate();
             worksheet.Application.ActiveWindow.SplitRow = 2;
             worksheet.Application.ActiveWindow.FreezePanes = true;
