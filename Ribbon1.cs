@@ -44,8 +44,6 @@ namespace circuit_generator
             
             Tabl_odnolin t1 = new Tabl_odnolin();
             
-
-
             t1.Draw_excel(nativeWorksheet);
             if (nativeWorksheet.Name.Contains("Лист"))
             {
