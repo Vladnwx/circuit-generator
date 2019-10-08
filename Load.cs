@@ -24,7 +24,6 @@ namespace circuit_generator
         
         public int Load_number_coluumn { get; set; } // Номер столбца для нагрузки
         
-       
         public string Type_network { get; set; } // Тип применяемой сети на комплексную нагрузку (трехфазная разводка, с ответвлением в коробке пофазно или однофазная прямо от щита)
         
         // Добавить список возможных характеров нагрузки (Розетки, Светильники, двигатели, нагреватели, шкафчики, комплексная нагрузка) 
@@ -47,6 +46,37 @@ namespace circuit_generator
             
            worksheet.Cells[Constants.Fider_finish_row, Load_number_coluumn].Value = Source_load;
            
+        }
+        public Load() : this("Неизвестно") // Конструктор без параметров
+        {
+        }
+        public Load(string Number_of_phases) : this(Number_of_phases, "Неизвестно") // Конструктор с указанием только числа фаз
+        {
+        }
+        public Load(string Number_of_phases, string Power) : this(Source, Power, "Неизвестно") // Конструктор c мощностью
+        {
+        }
+        public Load(string Number_of_phases, string Power, string Cosphi) : this(Source, Power, Cosphi, "Неизвестно") // Конструктор с косинусом
+        {
+        }
+        public Load(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box) : this(Source, Power, Cosphi, bool Start_load_in_box, "Неизвестно") // Конструктор с указанием начала в щите
+        {
+        }
+        public Load(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box, string Start_load) : this(Source, Power, Cosphi, bool Start_load_in_box, string Start_load, "Неизвестно") // Конструктор с указанием начала нагрузки
+        {
+        }
+        public Load(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load) : this(Source, Power, Cosphi, bool Start_load_in_box, string Start_load, string Source_load, "Неизвестно") // Конструктор с указанием конца нагрузки
+        {
+        }
+        public Load(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string Type_network) // Конструктор полный
+        {
+            this.Number_of_phases = Number_of_phases;
+            this.Power = ToDouble(Power);
+            this.Cosphi = ToDouble(Cosphi);
+            this.Start_load_in_box = ToBoolean(Start_load_in_box);
+            this.Start_load = Start_load;
+            this.Source_load = Source_load;
+            this.Type_network = Type_network;
         }
         
     }
