@@ -20,9 +20,11 @@ namespace circuit_generator {
         public void Draw_excel_left(Microsoft.Office.Interop.Excel.Worksheet worksheet) // Таблица слева для однолинейной схемы
         {
 
-            worksheet.Columns[Constants.Tabl_start_column-3].Hidden = true;
-            worksheet.Columns[Constants.Tabl_start_column - 2].Hidden = true;
-            worksheet.Columns[Constants.Tabl_start_column - 1].Hidden = true;//Тут нужно скрыть столбцы A, B, C
+            for ( int i=0; i<Constants.Tabl_start_column; i++) //Тут скрываются столбцы до начала вставки таблицы
+            {
+                worksheet.Columns[i].Hidden = true;
+            }
+           
 
             worksheet.Cells[Constants.Tabl_start_row, Constants.Tabl_start_column + 2].Select();
             Globals.ThisAddIn.Application.ActiveWindow.FreezePanes = true; //зафиксировать столбец и строку
