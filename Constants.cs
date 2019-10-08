@@ -10,7 +10,7 @@ namespace circuit_generator
         public const int Tabl_start_column = 4; // Номер стобца, с которого начинается таблица схемы (столбец Е)
         public const int First_fider_column = Tabl_start_column+2; // Номер стобца, с которого начинается фидер
         public const int fider_width_column = 2; // Число столбцов, которое занимает фидер
-        public const int Width_column = 11; // Число столбцов, которое занимает фидер
+        public const int Width_column = 11; // Ширина столбца
         public const int Tabl_start_row = 4; // Номер строки, с которого начинается таблица схемы (срока 4)
         public const int First_fider_row = Tabl_start_row+11; // Номер строки, с которой начинается фидер
         public const int Last_fider_row = Tabl_start_row+60; // Номер строки, которой заканчивается фидер
