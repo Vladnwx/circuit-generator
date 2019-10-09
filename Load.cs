@@ -78,6 +78,23 @@ namespace circuit_generator
             this.Source_load = Source_load;
             this.Type_network = Type_network;
         }
-        
+        public void Chek_double (ref string s) //Проверяет передачу дробного числа с символом запятой, преобразует запятую в точку и проверяет возможность преобразования в Double
+        {
+            char ch_find = ','; // Символ, который мы ищем для замены
+            char ch_change = '.'; // Символ, который на который мы заменяем
+            s = s.Replace(ch_find, ch_change); // Тут мы меняем символы
+            //Тут мы ловим возможну ошибку преобразования в Double
+            try 
+            {
+                s = Convert.ToDouble(s);
+            }
+            
+            catch (Exception ex) 
+            {
+               MessageBox.Show($"Исключение: {ex.Message}"); // Тут мы выдаем сообщение о возникновении исключения
+               s = s.Remove (s.Lenght); //Тут мы очищаем строку
+            }
+            
+        }
     }
 }
