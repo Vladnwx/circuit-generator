@@ -53,5 +53,63 @@ namespace circuit_generator
 
         public const int Tabl_potreb_column = Tabl_start_column+21; // Номер столбца, в которую пишется табличка потребности в кабеле и трубах
 
+        SortedList<string, string> Cable_metal_type = new SortedList<string, string>();
+            Cable_metal_type.Add("cu", "Cu");
+            Cable_metal_type.Add("al", "Al");
+            ICollection<string> Keys_cable_metal_type = Cable_metal_type.Keys;
+            foreach (string i in Keys_cable_metal_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Cable_metal_type[i]);
+        
+         SortedList<string, string> Cable_insulation_type = new SortedList<string, string>();
+            Cable_insulation_type.Add("pvc", "ПВХ");
+            Cable_insulation_type.Add("pe", "ПЭ");
+            ICollection<string> Keys_cable_insulation_type = Cable_insulation_type.Keys;
+            foreach (string i in Keys_cable_insulation_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Cable_insulation_type[i]);
+        
+        SortedList<string, string> Cabel_jila = new SortedList<string, string>();
+            Cabel_jila.Add("single_core", "одножильный");
+            Cabel_jila.Add("stranded", "многожильный");
+            ICollection<string> Keys_cabel_jila = Cabel_jila.Keys;
+            foreach (string i in Keys_cabel_jila)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Cabel_jila[i]);
+       
+        SortedList<string, string> Current_type = new SortedList<string, string>();
+            Current_type.Add("ac", "переменный");
+            Current_type.Add("dc", "постоянный");
+            ICollection<string> Keys_current_type = Current_type.Keys;
+            foreach (string i in Keys_current_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Current_type[i]);
+        
+        SortedList<string, string> Environment_type = new SortedList<string, string>();
+            Environment_type.Add("earth", "земля");
+            Environment_type.Add("air", "воздух");
+            ICollection<string> Keys_environment_type = Environment_type.Keys;
+            foreach (string i in Keys_environment_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Environment_type[i]);
+        
+        SortedList<string, string> Prokladka_type = new SortedList<string, string>();
+            Prokladka_type.Add("single", "одиночная");
+            Prokladka_type.Add("group", "групповая");
+            ICollection<string> Keys_prokladka_type = Prokladka_type.Keys;
+            foreach (string i in Keys_prokladka_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Prokladka_type[i]);
+        
+        SortedList<string, string> Number_of_phases = new SortedList<string, string>();
+            Number_of_phases.Add("1", "однофазная");
+            Number_of_phases.Add("2", "двухфазная");
+            Number_of_phases.Add("3", "трехфазная");
+            ICollection<string> Keys_number_of_phases = Number_of_phases.Keys;
+            foreach (string i in Keys_number_of_phases)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Number_of_phases[i]);
+        
+           SortedList<string, string> Standart_voltage = new SortedList<string, string>();
+            Standart_voltage.Add("220", "220");
+            Standart_voltage.Add("380", "380");
+            Standart_voltage.Add("24", "24");
+            ICollection<string> Keys_standart_voltage = Standart_voltage.Keys;
+            foreach (string i in Keys_standart_voltage)
+            Console.WriteLine("Key: {0}, Value: {1}", i, Standart_voltage[i]);
+        
     }
 }
