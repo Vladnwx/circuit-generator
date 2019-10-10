@@ -19,6 +19,8 @@ namespace circuit_generator
         public const int QF_type_fider_row = Tabl_start_row+12; // Номер строки, в которую пишется тип автоматов
         public const int QF_setpoint_fider_row = Tabl_start_row+13; // Номер строки, в которую пишется уставка автоматов
         public const int QF_p_fider_row = Tabl_start_row+14; // Номер строки, в которую пишется количество полюсов автоматов
+        public const int QF_har_type_row = Tabl_start_row+15; // Номер строки, в которую пишется характеристика автоматов
+        public const int QF_manufacturer_row = Tabl_start_row+16; // Номер строки, в которую пишется производитель автоматов
 
         public const int Fider_info_row = Tabl_start_row+21; // Номер строки, в которую пишется сборная информация по фидеру
         public const int Fider_image_row = Tabl_start_row+22; // Номер строки, в которую пишется изображение на плане
@@ -110,6 +112,86 @@ namespace circuit_generator
             ICollection<string> Keys_standart_voltage = Standart_voltage.Keys;
             foreach (string i in Keys_standart_voltage)
             Console.WriteLine("Key: {0}, Value: {1}", i, Standart_voltage[i]);
+        
+        SortedList<string, string> QF_p_fider = new SortedList<string, string>();
+            QF_p_fider.Add("1", "1P");
+            QF_p_fider.Add("2", "2P");
+            QF_p_fider.Add("3", "3P");
+            QF_p_fider.Add("4", "4P");
+            ICollection<string> Keys_QF_p_fider = QF_p_fider.Keys;
+            foreach (string i in Keys_QF_p_fider)
+            Console.WriteLine("Key: {0}, Value: {1}", i, QF_p_fider[i]);
+        
+        SortedList<string, string> QF_har_type = new SortedList<string, string>();
+            QF_har_type.Add("A", "A");
+            QF_har_type.Add("B", "B");
+            QF_har_type.Add("C", "C");
+            QF_har_type.Add("D", "D");
+            ICollection<string> Keys_QF_har_type = QF_har_type.Keys;
+            foreach (string i in Keys_QF_har_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, QF_har_type[i]);
+        
+        SortedList<string, string> QF_har_type = new SortedList<string, string>();
+            QF_har_type.Add("QF", "Автоматический выключатель");
+            QF_har_type.Add("QD", "Устройство защитного отключения");
+            QF_har_type.Add("QS", "Выключатель нагрузки");
+            QF_har_type.Add("QF+QD", "Автоматический выключатель + Устройство защитного отключения");
+            QF_har_type.Add("QFD", "Дифференциальный автоматический выключатель");
+            ICollection<string> Keys_QF_har_type = QF_har_type.Keys;
+            foreach (string i in Keys_QF_har_type)
+            Console.WriteLine("Key: {0}, Value: {1}", i, QF_har_type[i]);
+        
+        SortedList<string, string> QF_manufacturer = new SortedList<string, string>();
+            QF_manufacturer.Add("SE", "Schneider Electric");
+            QF_manufacturer.Add("Si", "Siemens");
+            QF_manufacturer.Add("ABB", "ABB");
+            QF_manufacturer.Add("IEK", "IEK");
+            ICollection<string> Keys_QF_manufacturer = QF_manufacturer.Keys;
+            foreach (string i in Keys_QF_manufacturer)
+            Console.WriteLine("Key: {0}, Value: {1}", i, QF_manufacturer[i]);
+        
+        SortedList<string, string> QF_type_fider = new SortedList<string, string>();
+            QF_type_fider.Add("IC60N", "IC60N");
+            ICollection<string> Keys_QF_type_fider = QF_type_fider.Keys;
+            foreach (string i in Keys_QF_type_fider)
+            Console.WriteLine("Key: {0}, Value: {1}", i, QF_type_fider[i]);
+        
+        SortedList<string, string> QF_setpoint_fider = new SortedList<string, string>();
+            QF_setpoint_fider.Add("6", "6A");
+            QF_setpoint_fider.Add("10", "10A");
+            QF_setpoint_fider.Add("16", "16A");
+            QF_setpoint_fider.Add("20", "20A");
+            QF_setpoint_fider.Add("25", "25A");
+            QF_setpoint_fider.Add("32", "32A");
+            QF_setpoint_fider.Add("40", "40A");
+            QF_setpoint_fider.Add("50", "50A");
+            QF_setpoint_fider.Add("63", "63A");
+            QF_setpoint_fider.Add("80", "80A");
+            QF_setpoint_fider.Add("100", "100A");
+            QF_setpoint_fider.Add("125", "125A");
+            QF_setpoint_fider.Add("160", "160A");
+            QF_setpoint_fider.Add("200", "200A");
+            QF_setpoint_fider.Add("250", "250A");
+            QF_setpoint_fider.Add("315", "315A");
+            QF_setpoint_fider.Add("355", "330A");
+            QF_setpoint_fider.Add("400", "400A");
+            QF_setpoint_fider.Add("500", "500A");
+            QF_setpoint_fider.Add("630", "630A");
+            QF_setpoint_fider.Add("800", "800A");
+            QF_setpoint_fider.Add("1000", "1000A");
+            QF_setpoint_fider.Add("1200", "1200A");
+            QF_setpoint_fider.Add("1600", "1600A");
+            QF_setpoint_fider.Add("2000", "2000A");
+            QF_setpoint_fider.Add("2500", "2500A");
+            QF_setpoint_fider.Add("3200", "3200A");
+            QF_setpoint_fider.Add("4000", "4000A");
+            QF_setpoint_fider.Add("5000", "5000A");
+            QF_setpoint_fider.Add("6300", "6300A");
+            ICollection<string> Keys_QF_setpoint_fider = QF_setpoint_fider.Keys;
+            foreach (string i in Keys_QF_setpoint_fider)
+            Console.WriteLine("Key: {0}, Value: {1}", i, QF_setpoint_fider[i]);
+        
+        
         
     }
 }
