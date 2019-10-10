@@ -71,6 +71,35 @@ namespace circuit_generator
 
             MessageBox.Show(nativeWorksheet.Name); //Вывод названия текущего листа
         }
+
+        private void button2_Click(object sender, RibbonControlEventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Workbook nativeWorkbook =
+             Globals.ThisAddIn.Application.ActiveWorkbook; // Переменная nativeWorkbook - текущая открытая книга
+            if (nativeWorkbook != null)
+            {
+                Microsoft.Office.Tools.Excel.Workbook vstoWorkbook =
+                    Globals.Factory.GetVstoObject(nativeWorkbook);
+            }
+
+            Microsoft.Office.Interop.Excel.Worksheet nativeWorksheet =
+                     Globals.ThisAddIn.Application.ActiveSheet; // Переменная nativeWorksheet - текущий открытый лист
+
+            if (nativeWorksheet != null)
+            {
+                Microsoft.Office.Tools.Excel.Worksheet vstoSheet =
+                   Globals.Factory.GetVstoObject(nativeWorksheet);
+            }
+
+            Form_load f1 = new Form_load();
+            f1.Show();
+
+        }
+
+        private void button3_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
     }
 
         
