@@ -44,7 +44,7 @@ namespace circuit_generator
             
             Tabl_odnolin t1 = new Tabl_odnolin();
             
-            t1.Draw_excel(nativeWorksheet);
+            t1.Draw(nativeWorksheet);
             if (nativeWorksheet.Name.Contains("Лист"))
             {
                 MessageBox.Show("Шкаф должен иметь название в имени листа!"); //Вывод названия текущего листа

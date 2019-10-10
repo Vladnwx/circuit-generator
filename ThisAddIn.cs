@@ -21,6 +21,7 @@ namespace circuit_generator
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
+
         }
 
         #region Код, автоматически созданный VSTO

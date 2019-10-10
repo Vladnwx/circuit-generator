@@ -76,14 +76,14 @@ namespace circuit_generator
         {
         }
 
-        public string Output_fider_info1()  //Объединяет информацию по фидеру в 1-ю строчку надписи кабеля
+        public void Output_fider_info1()  //Объединяет информацию по фидеру в 1-ю строчку надписи кабеля
         {
-            Output_fider_info1() = 
+            //Output_fider_info1() = 
         }
 
-        public string Output_fider_info2()  //Объединяет информацию по фидеру во 2-ю строчку надписи кабеля
+        public void Output_fider_info2()  //Объединяет информацию по фидеру во 2-ю строчку надписи кабеля
         {
-            Output_fider_info2() = 
+           // Output_fider_info2() = 
         }
 
         public void Select_cabel_truba()  //Выбирает сечение применяемой трубы для фидера
