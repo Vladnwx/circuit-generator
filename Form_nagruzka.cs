@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace circuit_generator
 {
-    public partial class Form_load : Form
+    public partial class Form_nagruzka : Form
     {
-        public Form_load()
+        public Form_nagruzka()
         {
             InitializeComponent();
         }
@@ -54,7 +48,7 @@ namespace circuit_generator
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
-            listView3.Enabled = !checkBox.Checked;
+           // listBox3.Enabled = !checkBox.Checked;
 
 
             if (checkBox.Checked == true)
@@ -68,7 +62,9 @@ namespace circuit_generator
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            Nagruzka nagruzka = new Nagruzka();
 
+            //nagruzka.Power = 
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -104,9 +100,10 @@ namespace circuit_generator
                 MessageBox.Show("Вы выбрали " + radioButton.Text);
             }
         }
-        private void Form_load_Load(object sender, EventArgs e)
+        protected void Form_load_Load(object sender, EventArgs e)
         {
-
+            comboBox1.DataSource = Nagruzka.Standart_power;
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -125,18 +122,10 @@ namespace circuit_generator
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-           
-        }
-
-        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
 
         }
 
-        private void listView2_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void groupBox9_Enter(object sender, EventArgs e)
         {
@@ -148,7 +137,27 @@ namespace circuit_generator
 
         }
 
-        private void listView3_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

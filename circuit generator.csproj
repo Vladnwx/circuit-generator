@@ -32,8 +32,12 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>circuit_generator</RootNamespace>
     <AssemblyName>circuit generator</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>опубликовать\</PublishUrl>
     <InstallUrl />
@@ -43,17 +47,19 @@
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <IsWebBootstrapper>False</IsWebBootstrapper>
     <ProductName>circuit generator</ProductName>
     <PublisherName />
     <SupportUrl />
     <FriendlyName>circuit generator</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
@@ -96,6 +102,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -120,13 +127,18 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="AcCui">
+      <HintPath>..\..\..\Program Files\Autodesk\AutoCAD 2018\AcCui.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -182,23 +194,29 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Avtomat.cs" />
     <Compile Include="Cable.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Form_load.cs">
+    <Compile Include="Form_nagruzka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_load.Designer.cs">
-      <DependentUpon>Form_load.cs</DependentUpon>
+    <Compile Include="Form_nagruzka.Designer.cs">
+      <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </Compile>
-    <Compile Include="List.cs" />
-    <Compile Include="Load.cs" />
+    <Compile Include="Nagruzka.cs" />
     <Compile Include="Fider.cs" />
+    <Compile Include="Rename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rename.Designer.cs">
+      <DependentUpon>Rename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tabl_odnolin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="Form_load.resx">
-      <DependentUpon>Form_load.cs</DependentUpon>
+    <EmbeddedResource Include="Form_nagruzka.resx">
+      <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -208,11 +226,17 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Rename.resx">
+      <DependentUpon>Rename.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ribbon1.resx">
       <DependentUpon>Ribbon1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="circuit generator_TemporaryKey.pfx" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -221,6 +245,7 @@
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Ribbon1.cs">
       <SubType>Component</SubType>
@@ -264,6 +289,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>1D2CF335EE20B93F38EAE06ACD93F0AA00F26D2D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>circuit generator_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

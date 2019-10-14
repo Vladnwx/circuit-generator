@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-using Excel = Microsoft.Office.Interop.Excel;
-using Office = Microsoft.Office.Core;
-using Microsoft.Office.Tools.Excel;
-using Microsoft.Office.Tools.Ribbon;
-using System.Windows.Forms;
+﻿using Microsoft.Office.Tools.Ribbon;
 
 namespace circuit_generator
 
@@ -38,14 +29,14 @@ namespace circuit_generator
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
             var ribbon = new Ribbon1();
-          //  ribbon.ButtonClicked += ribbon_ButtonClicked;
+            //  ribbon.ButtonClicked += ribbon_ButtonClicked;
             return Globals.Factory.GetRibbonFactory().CreateRibbonManager(new IRibbonExtension[] { ribbon });
         }
 
-       // private void ribbon_ButtonClicked()
-      //  {
-      //      MessageBox.Show("Hello, world!");
-      //  }
+        // private void ribbon_ButtonClicked()
+        //  {
+        //      MessageBox.Show("Hello, world!");
+        //  }
 
         #endregion
     }

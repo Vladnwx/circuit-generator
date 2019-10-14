@@ -39,11 +39,11 @@
             this.button1 = this.Factory.CreateRibbonButton();
             this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.group2 = this.Factory.CreateRibbonGroup();
+            this.button2 = this.Factory.CreateRibbonButton();
+            this.button3 = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.group4 = this.Factory.CreateRibbonGroup();
             this.group5 = this.Factory.CreateRibbonGroup();
-            this.button2 = this.Factory.CreateRibbonButton();
-            this.button3 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
@@ -75,9 +75,8 @@
             // 
             // toggleButton1
             // 
-            this.toggleButton1.Label = "Вывести название листа";
+            this.toggleButton1.Label = "";
             this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
             // 
             // group2
             // 
@@ -85,6 +84,18 @@
             this.group2.Items.Add(this.button3);
             this.group2.Label = "group2";
             this.group2.Name = "group2";
+            // 
+            // button2
+            // 
+            this.button2.Label = "Добавить фидер";
+            this.button2.Name = "button2";
+            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Label = "Переименовать шкаф";
+            this.button3.Name = "button3";
+            this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
             // 
             // group3
             // 
@@ -100,18 +111,6 @@
             // 
             this.group5.Label = "group5";
             this.group5.Name = "group5";
-            // 
-            // button2
-            // 
-            this.button2.Label = "Добавить фидер";
-            this.button2.Name = "button2";
-            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Label = "button3";
-            this.button3.Name = "button3";
-            this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
             // 
             // Ribbon1
             // 

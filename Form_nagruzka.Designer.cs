@@ -1,6 +1,6 @@
 ﻿namespace circuit_generator
 {
-    partial class Form_load
+    partial class Form_nagruzka
     {
         /// <summary>
         /// Required designer variable.
@@ -36,33 +36,23 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.listView4 = new System.Windows.Forms.ListView();
-            this.listView5 = new System.Windows.Forms.ListView();
-            this.listView6 = new System.Windows.Forms.ListView();
-            this.listView7 = new System.Windows.Forms.ListView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.listView8 = new System.Windows.Forms.ListView();
-            this.listView9 = new System.Windows.Forms.ListView();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButton3
@@ -79,7 +69,6 @@
             // 
             // radioButton1
             // 
-            this.radioButton1.AutoEllipsis = true;
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(1, 15);
@@ -155,7 +144,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listView1);
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Location = new System.Drawing.Point(110, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(110, 80);
@@ -163,9 +152,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Мощность,  кВт";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 16);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(104, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listView2);
             this.groupBox3.Location = new System.Drawing.Point(220, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(110, 80);
@@ -175,7 +173,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listView3);
+            this.groupBox4.Controls.Add(this.comboBox3);
             this.groupBox4.Location = new System.Drawing.Point(330, 0);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(110, 80);
@@ -185,7 +183,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.listView4);
+            this.groupBox5.Controls.Add(this.comboBox4);
             this.groupBox5.Location = new System.Drawing.Point(330, 86);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(110, 80);
@@ -195,7 +193,6 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.listView5);
             this.groupBox6.Location = new System.Drawing.Point(110, 86);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(110, 80);
@@ -205,7 +202,6 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.listView6);
             this.groupBox7.Location = new System.Drawing.Point(110, 172);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(110, 80);
@@ -215,7 +211,6 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.listView7);
             this.groupBox8.Location = new System.Drawing.Point(226, 172);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(276, 80);
@@ -223,90 +218,9 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Тип применяемой сети на комплексную нагрузку";
             // 
-            // listView1
-            // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 16);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(104, 61);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
-            // 
-            // listView2
-            // 
-            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(3, 16);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(104, 61);
-            this.listView2.TabIndex = 33;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged_1);
-            // 
-            // listView3
-            // 
-            this.listView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView3.Enabled = false;
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(3, 16);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(104, 61);
-            this.listView3.TabIndex = 0;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.List;
-            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged_1);
-            // 
-            // listView4
-            // 
-            this.listView4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(3, 16);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(104, 61);
-            this.listView4.TabIndex = 0;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.List;
-            // 
-            // listView5
-            // 
-            this.listView5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(3, 16);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(104, 61);
-            this.listView5.TabIndex = 0;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            this.listView5.View = System.Windows.Forms.View.List;
-            // 
-            // listView6
-            // 
-            this.listView6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView6.HideSelection = false;
-            this.listView6.Location = new System.Drawing.Point(3, 16);
-            this.listView6.Name = "listView6";
-            this.listView6.Size = new System.Drawing.Size(104, 61);
-            this.listView6.TabIndex = 0;
-            this.listView6.UseCompatibleStateImageBehavior = false;
-            this.listView6.View = System.Windows.Forms.View.List;
-            // 
-            // listView7
-            // 
-            this.listView7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView7.HideSelection = false;
-            this.listView7.Location = new System.Drawing.Point(3, 16);
-            this.listView7.Name = "listView7";
-            this.listView7.Size = new System.Drawing.Size(270, 61);
-            this.listView7.TabIndex = 0;
-            this.listView7.UseCompatibleStateImageBehavior = false;
-            this.listView7.View = System.Windows.Forms.View.List;
-            // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.listView8);
+            this.groupBox9.Controls.Add(this.comboBox5);
             this.groupBox9.Location = new System.Drawing.Point(1, 86);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(110, 80);
@@ -318,7 +232,6 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.listView9);
             this.groupBox10.Location = new System.Drawing.Point(1, 172);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(110, 80);
@@ -328,29 +241,36 @@
             this.groupBox10.Visible = false;
             this.groupBox10.Enter += new System.EventHandler(this.groupBox10_Enter);
             // 
-            // listView8
+            // comboBox3
             // 
-            this.listView8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView8.HideSelection = false;
-            this.listView8.Location = new System.Drawing.Point(3, 16);
-            this.listView8.Name = "listView8";
-            this.listView8.Size = new System.Drawing.Size(104, 61);
-            this.listView8.TabIndex = 0;
-            this.listView8.UseCompatibleStateImageBehavior = false;
-            this.listView8.View = System.Windows.Forms.View.List;
+            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(3, 16);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(104, 21);
+            this.comboBox3.TabIndex = 0;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
-            // listView9
+            // comboBox4
             // 
-            this.listView9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView9.HideSelection = false;
-            this.listView9.Location = new System.Drawing.Point(3, 16);
-            this.listView9.Name = "listView9";
-            this.listView9.Size = new System.Drawing.Size(104, 61);
-            this.listView9.TabIndex = 0;
-            this.listView9.UseCompatibleStateImageBehavior = false;
-            this.listView9.View = System.Windows.Forms.View.List;
+            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(3, 16);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(104, 21);
+            this.comboBox4.TabIndex = 0;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
-            // Form_load
+            // comboBox5
+            // 
+            this.comboBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(3, 16);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(104, 21);
+            this.comboBox5.TabIndex = 0;
+            // 
+            // Form_nagruzka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -371,20 +291,15 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.MinimumSize = new System.Drawing.Size(500, 500);
-            this.Name = "Form_load";
+            this.Name = "Form_nagruzka";
             this.Text = "Добавление нагрузки";
             this.Load += new System.EventHandler(this.Form_load_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,16 +321,11 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ListView listView4;
-        private System.Windows.Forms.ListView listView5;
-        private System.Windows.Forms.ListView listView6;
-        private System.Windows.Forms.ListView listView7;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ListView listView8;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.ListView listView9;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox5;
     }
 }
