@@ -11,9 +11,8 @@ namespace circuit_generator
         Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; } // Таблица над которрой мы выполняем действия
                                                                                 // public Autodesk.AutoCAD.ApplicationServices.Application Acad { get; set; } // Таблица над которрой мы выполняем действия
                                                                                 //Нужно добавить перегрузку в зависимости от типа передаваемого аргумента. Сейчас передается таблица Excel. Нужно добавить тот же способ для передачи приложения или листа Autocad
-        public void Draw(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        public void Draw()
         {
-            Worksheet = worksheet;
             Draw_left();
             Draw_vvod();
             Draw_nagr();
@@ -26,13 +25,9 @@ namespace circuit_generator
               this.Acad = acad;
           }*/
 
-        public void Check(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        public void Check()
         {
-            Worksheet = worksheet;
-            //bool easy;
-
-
-
+            Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
             string s = Globals.ThisAddIn.Application.ActiveSheet.Name;
             bool b1 = s.Contains("Лист");
             bool b2 = s.Contains("Sheet");
@@ -43,8 +38,9 @@ namespace circuit_generator
                
                 Rename r1 = new Rename();
                 r1.Show();
+               
             }
-            else Draw(worksheet);
+            else Draw();
             //Draw(worksheet);
 
 
@@ -52,9 +48,9 @@ namespace circuit_generator
         }
         public void Draw_left() // Таблица слева для однолинейной схемы
         {
-            for (int i = 1; i < Constants.Tabl.Left.Column.Start; i++) //Тут скрываются столбцы до начала вставки таблицы
+            for (int i = 1; i < tlc.Start; i++) //Тут скрываются столбцы до начала вставки таблицы
             {
-                Worksheet.Columns[i].Hidden = true;
+                this.Worksheet.Columns[i].Hidden = true;
             }
 
             Worksheet.Cells[tlr.Start, tlc.Start + 2].Select();

@@ -197,12 +197,27 @@
     <Compile Include="Avtomat.cs" />
     <Compile Include="Cable.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Current.cs">
+      <DependentUpon>Current.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Current.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Current.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form_current.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_current.Designer.cs">
+      <DependentUpon>Form_current.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_nagruzka.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_nagruzka.Designer.cs">
       <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Nagruzka.cs" />
     <Compile Include="Fider.cs" />
     <Compile Include="Rename.cs">
@@ -215,6 +230,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="Form_current.resx">
+      <DependentUpon>Form_current.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_nagruzka.resx">
       <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +255,17 @@
     <None Include="app.config" />
     <None Include="circuit generator_TemporaryKey.pfx" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="Current.xsc">
+      <DependentUpon>Current.xsd</DependentUpon>
+    </None>
+    <None Include="Current.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Current.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Current.xss">
+      <DependentUpon>Current.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

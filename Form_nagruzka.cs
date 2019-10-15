@@ -8,41 +8,26 @@ namespace circuit_generator
         public Form_nagruzka()
         {
             InitializeComponent();
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+           
 
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        protected void Form_nagruzka_Load(object sender, EventArgs e)
         {
+            listBox1.DataSource = Nagruzka.GetNumberOfPhases();
+            comboBox1.DataSource = Nagruzka.GetStandartPower();
+            comboBox5.DataSource = Nagruzka.GetStandartVoltage();
+            listBox2.DataSource = Nagruzka.GetType();
+            listBox3.DataSource = Nagruzka.GetHarakter();
+            listBox4.DataSource = Nagruzka.GetTypeNetwork();
+
+            label1.Text = Convert.ToString(Convert.ToDouble(comboBox1.Text.ToString()) * 1000 / Convert.ToDouble(comboBox5.Text.ToString()));
+
+           
 
         }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void Form_nagruzka_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            Dispose();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -67,11 +52,6 @@ namespace circuit_generator
             //nagruzka.Power = 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             // приводим отправителя к элементу типа RadioButton
@@ -81,51 +61,16 @@ namespace circuit_generator
                 MessageBox.Show("Вы выбрали " + radioButton.Text);
             }
         }
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            // приводим отправителя к элементу типа RadioButton
-            RadioButton radioButton = (RadioButton)sender;
-            if (radioButton.Checked)
-            {
-                MessageBox.Show("Вы выбрали " + radioButton.Text);
-            }
-        }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            // приводим отправителя к элементу типа RadioButton
-            RadioButton radioButton = (RadioButton)sender;
-            if (radioButton.Checked)
-            {
-                MessageBox.Show("Вы выбрали " + radioButton.Text);
-            }
-        }
-        protected void Form_load_Load(object sender, EventArgs e)
-        {
-            comboBox1.DataSource = Nagruzka.Standart_power;
-            
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
 
-            groupBox9.Visible = checkBox.Checked;
-            groupBox10.Visible = checkBox.Checked;
+          //  groupBox9.Visible = checkBox.Checked;
+           // groupBox10.Visible = checkBox.Checked;
 
         }
-
-        private void radioButton_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
 
         private void groupBox9_Enter(object sender, EventArgs e)
         {
@@ -139,12 +84,7 @@ namespace circuit_generator
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -157,7 +97,32 @@ namespace circuit_generator
 
         }
 
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

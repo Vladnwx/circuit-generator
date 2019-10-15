@@ -8,85 +8,109 @@ namespace circuit_generator
     {
 
         Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; }
-        //Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-
-
-        public static List<double> Standart_voltage = new List<double>() { 220D, 380D, 24D, 12D, 230D, 400D };
-
-        public static List<double> Standart_power = new List<double>() { 1, 1.5D, 2D, 2.5D, 3D, 0.5D, 0.1D };
-        
-        public static List<string> Harakter_load = new List<string>() { "Светильники", "Розетки", "Двигатель", "Шкаф", "Комплексная нагрузка" };
-        // Характер нагрузки (двигатель, розетка, светильник, шкафчик), добавить рекомендации по ограничению одной группы освещения не более 10А. 
-                                                  //Елси нагрузка комплексная то давать возможность ввести косинус. Если розетка, то давать ввести количество розеток. 
-                                                  //Если светильники, то давать ввести количество светильников и мощность одного. 
-                                                  //Если двигатель, то запрашивать данные об установленном выключаетел в шкафу управления двигателем.
-
-        public static List<string> Number_of_phases = new List<string>() { "1", "2", "3" };
-        
-        public static List<string> Type_network = new List<string>() { "трехфазная разводка с ответвлением в коробке пофазно", "однофазная прямо от щита", "3" }; // Тип применяемой сети на комплексную нагрузку
-
-        public static List<string> Type_load = new List<string>() { "конечная", "промежуточная"}; // Тип нагрузки
        
-        //добавить список типовых мощностей в зависимости от выбранных характеров
-        public double Power { get; set; } // Мощность в кВт, добавить проверку мощности (она не может быть отрицательной)
+        private static readonly List<string> NumberOfPhases = new List<string>() { "1", "2", "3" };
+        public static List<string> GetNumberOfPhases()
+        {
+            return NumberOfPhases;
+        }
+        private static readonly List<double> StandartVoltage = new List<double>() { 220D, 380D, 24D, 12D, 230D, 400D };
+        public static List<double> GetStandartVoltage()
+        {
+            return StandartVoltage;
+        }
+        private static readonly List<double> StandartPower = new List<double>() { 1, 1.5D, 2D, 2.5D, 3D, 0.5D, 0.1D }; //добавить список типовых мощностей в зависимости от выбранных характеров
+        public static List<double> GetStandartPower()
+        {
+            return StandartPower;
+        }
+        private static readonly List<string> Harakter = new List<string>() { "Светильники", "Розетки", "Двигатель", "Шкаф", "Комплексная нагрузка" };
+        public static List<string> GetHarakter()
+        {
+            return Harakter;
+        }
+        // Характер нагрузки (двигатель, розетка, светильник, шкафчик), добавить рекомендации по ограничению одной группы освещения не более 10А. 
+        //Елси нагрузка комплексная то давать возможность ввести косинус. Если розетка, то давать ввести количество розеток. 
+        //Если светильники, то давать ввести количество светильников и мощность одного. 
+        //Если двигатель, то запрашивать данные об установленном выключаетел в шкафу управления двигателем.
+
+        private static readonly List<string> TypeNetwork = new List<string>() { "трехфазная разводка с ответвлением в коробке пофазно", "однофазная прямо от щита", "3" }; // Тип применяемой сети на комплексную нагрузку
+        public static List<string> GetTypeNetwork()
+        {
+            return TypeNetwork;
+        }
+
+        private static readonly List<string> Type = new List<string>() { "конечная", "промежуточная" }; // Тип нагрузки
+        public static List<string> GetType()
+        {
+            return Type;
+        }
+
+        private double Power { get; set; } // Мощность в кВт, добавить проверку мощности (она не может быть отрицательной)
 
         //добавить список типовых косинусов в зависимости от выбранных характеров
-        public double Cosphi { get; set; } // Косинус нагрузки , добавить проверку косинуса (он не может быть больше+-1)
+        double Cosphi { get; set; } // Косинус нагрузки , добавить проверку косинуса (он не может быть больше+-1)
 
-        public bool Start_load_in_box { get; set; } // Начало нагрузки в щите или ответвление от фидера, добавить проверку, что при отсутствии фидера невозможно поставить нагрузку как начинающуюся не от щита
+        bool StartInBox { get; set; } // Начало нагрузки в щите или ответвление от фидера, добавить проверку, что при отсутствии фидера невозможно поставить нагрузку как начинающуюся не от щита
 
-        public string Start_load { get; set; } // начало нагрузки
+        string Start { get; set; } // начало нагрузки
 
-        public string Source_load { get; set; } // Местоположение нагрузки
+        string Source { get; set; } // Местоположение нагрузки
 
-        public int Load_number_coluumn { get; set; } // Номер столбца для нагрузки
+        int ActiveColuumn { get; set; } // Номер столбца для нагрузки
 
 
-        public void Add_to_list() // Добавляет нагрузку на лист
+        public void AddToSheet() // Добавляет нагрузку на лист
         {
             Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-            
-            Worksheet.Cells[Constants.Fider.Row.Phase, Load_number_coluumn].Value = Number_of_phases;
 
-            Worksheet.Cells[Constants.Fider.Row.P, Load_number_coluumn].Value = Power;
+            ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
 
-            Worksheet.Cells[Constants.Fider.Row.Cos, Load_number_coluumn].Value = Cosphi;
+            Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = NumberOfPhases;
 
-            Worksheet.Cells[Constants.Fider.Row.Start, Load_number_coluumn].Value = Start_load;
+            Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Power;
 
-            Worksheet.Cells[Constants.Fider.Row.Finish, Load_number_coluumn].Value = Source_load;
+            Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Cosphi;
 
+            Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
+
+            Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
+
+            Globals.ThisAddIn.Application.ActiveWorkbook.Save();
         }
+
+
+
         /*   public Nagruzka() : this("Неизвестно") // Конструктор без параметров
            {
            }
-           public Nagruzka(string Number_of_phases) : this(Number_of_phases, "Неизвестно") // Конструктор с указанием только числа фаз
+           public Nagruzka(string NumberOfPhases) : this(NumberOfPhases, "Неизвестно") // Конструктор с указанием только числа фаз
            {
            }
-           public Nagruzka(string Number_of_phases, string Power) : this(Source, Power, "Неизвестно") // Конструктор c мощностью
+           public Nagruzka(string NumberOfPhases, string Power) : this(Source, Power, "Неизвестно") // Конструктор c мощностью
            {
            }*/
-        /*  public Nagruzka(string Number_of_phases, string Power, string Cosphi) : this(Source, Power, Cosphi, "Неизвестно") // Конструктор с косинусом
+        /*  public Nagruzka(string NumberOfPhases, string Power, string Cosphi) : this(Source, Power, Cosphi, "Неизвестно") // Конструктор с косинусом
           {
           }*/
-        /*   public Nagruzka(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box) : this(Source, Power, Cosphi, bool Start_load_in_box, "Неизвестно") // Конструктор с указанием начала в щите
+        /*   public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox) : this(Source, Power, Cosphi, bool StartInBox, "Неизвестно") // Конструктор с указанием начала в щите
            {
            }*/
-        /*  public Nagruzka(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box, string Start_load) : this(Source, Power, Cosphi, bool Start_load_in_box, string Start_load, "Неизвестно") // Конструктор с указанием начала нагрузки
+        /*  public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox, string Start) : this(Source, Power, Cosphi, bool StartInBox, string Start, "Неизвестно") // Конструктор с указанием начала нагрузки
           {
           }
-          public Nagruzka(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load) : this(Source, Power, Cosphi, bool Start_load_in_box, string Start_load, string Source_load, "Неизвестно") // Конструктор с указанием конца нагрузки
+          public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox, string Start, string Source) : this(Source, Power, Cosphi, bool StartInBox, string Start, string Source, "Неизвестно") // Конструктор с указанием конца нагрузки
           {
           }*/
-        public Nagruzka(string Number_of_phases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string Type_network) // Конструктор полный
+       /* public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
         {
-            this.Number_of_phases = Number_of_phases;
+            this.NumberOfPhases = NumberOfPhases;
             this.Power = Convert.ToDouble(Power);
             this.Cosphi = Convert.ToDouble(Cosphi);
-            this.Start_load_in_box = Convert.ToBoolean(Start_load_in_box);
-            this.Start_load = Start_load;
-            this.Source_load = Source_load;
-            this.Type_network = Type_network;
+            this.StartInBox = Convert.ToBoolean(Start_load_in_box);
+            this.Start = Start_load;
+            this.Source = Source_load;
+            this.TypeNetwork = TypeNetwork;
         }
 
         public Nagruzka()

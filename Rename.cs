@@ -21,8 +21,10 @@ namespace circuit_generator
             try
             {
                 Globals.ThisAddIn.Application.ActiveSheet.Name = maskedTextBox1.Text;
-                this.Close();
-                Globals.ThisAddIn.Application.ActiveWorkbook.Save();
+                Tabl_odnolin t1 = new Tabl_odnolin();
+                t1.Check();
+                Dispose();
+
             }
             catch (Exception ex)
             {
@@ -37,8 +39,7 @@ namespace circuit_generator
 
         private void Rename_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Tabl_odnolin t1 = new Tabl_odnolin();
-            t1.Check(Globals.ThisAddIn.Application.ActiveSheet);
+            
         }
     }
 }
