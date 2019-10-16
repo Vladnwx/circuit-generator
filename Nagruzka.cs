@@ -40,6 +40,12 @@ namespace circuit_generator
             return TypeNetwork;
         }
 
+        private static readonly List<double>  StandartCosf= new List<double>() { 0.8, 0.85, 0.9, 0.95, 1 }; // Тип нагрузки
+        public static List<string> GetStandartCosf()
+        {
+            return StandartCosf;
+        }
+
         private static readonly List<string> Type = new List<string>() { "конечная", "промежуточная" }; // Тип нагрузки
         public static List<string> GetType()
         {
