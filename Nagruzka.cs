@@ -86,7 +86,7 @@ MessageBox.Show(ex.Message);
 }
 
 }
-        public void WriteToSheet() // Добавляет нагрузку на лист
+        public void WriteToSheet(double NumberOfPhases, double Power, double Cosphi, string Start, string Source) // Добавляет нагрузку на лист
         {
             Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
 
