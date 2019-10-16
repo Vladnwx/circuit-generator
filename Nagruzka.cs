@@ -33,14 +33,14 @@ namespace circuit_generator
         //Если светильники, то давать ввести количество светильников и мощность одного. 
         //Если двигатель, то запрашивать данные об установленном выключаетел в шкафу управления двигателем.
 
-        private static readonly List<string> TypeNetwork = new List<string>() { "трехфазная разводка с ответвлением в коробке пофазно", "однофазная прямо от щита", "3" }; // Тип применяемой сети на комплексную нагрузку
+        private static readonly List<string> TypeNetwork = new List<string>() { "трехфазная разводка с ответвлением в коробке пофазно", "однофазная прямо от щита" }; // Тип применяемой сети на комплексную нагрузку
         public static List<string> GetTypeNetwork()
         {
             return TypeNetwork;
         }
 
-        private static readonly List<double>  StandartCosf= new List<double>() { 0.8, 0.85, 0.9, 0.95, 1 }; // Тип нагрузки
-        public static List<string> GetStandartCosf()
+        private static readonly List<double> StandartCosf = new List<double>() { 0.8, 0.85, 0.9, 0.95, 1 }; // Тип нагрузки
+        public static List<double> GetStandartCosf()
         {
             return StandartCosf;
         }
@@ -63,52 +63,52 @@ namespace circuit_generator
         int ActiveColuumn { get; set; } // Номер столбца для нагрузки
 
 
-public void GetFromSheet() // Получает данные из ячейки
-{
-    Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-    ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
-    try
-    {
-         NumberOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
+        public void GetFromSheet() // Получает данные из ячейки
+        {
+            Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
+            try
+            {
+                //NumberOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
 
-         Power = Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value;
+                Power = Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value;
 
-         Cosphi = Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value;
+                Cosphi = Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value;
 
-         Start =  Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value;
+                Start = Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value;
 
-         Source =  Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value;
-    }
+                Source = Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value;
+            }
 
-catch (Exception ex)
-{
-MessageBox.Show(ex.Message);
-}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-}
+        }
         public void WriteToSheet(double NumberOfPhases, double Power, double Cosphi, string Start, string Source) // Добавляет нагрузку на лист
         {
             Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
 
             ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
 
-           try
-     {
-            Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = NumberOfPhases;
+            try
+            {
+                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = NumberOfPhases;
 
-            Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Power;
+                Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Power;
 
-            Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Cosphi;
+                Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Cosphi;
 
-            Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
+                Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
 
-            Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
+                Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
             }
 
-catch (Exception ex)
-{
-MessageBox.Show(ex.Message);
-}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
             Globals.ThisAddIn.Application.ActiveWorkbook.Save();
@@ -137,37 +137,37 @@ MessageBox.Show(ex.Message);
           public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox, string Start, string Source) : this(Source, Power, Cosphi, bool StartInBox, string Start, string Source, "Неизвестно") // Конструктор с указанием конца нагрузки
           {
           }*/
-       /* public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
-        {
-            this.NumberOfPhases = NumberOfPhases;
-            this.Power = Convert.ToDouble(Power);
-            this.Cosphi = Convert.ToDouble(Cosphi);
-            this.StartInBox = Convert.ToBoolean(Start_load_in_box);
-            this.Start = Start_load;
-            this.Source = Source_load;
-            this.TypeNetwork = TypeNetwork;
-        }
+        /* public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
+         {
+             this.NumberOfPhases = NumberOfPhases;
+             this.Power = Convert.ToDouble(Power);
+             this.Cosphi = Convert.ToDouble(Cosphi);
+             this.StartInBox = Convert.ToBoolean(Start_load_in_box);
+             this.Start = Start_load;
+             this.Source = Source_load;
+             this.TypeNetwork = TypeNetwork;
+         }
 
-        public Nagruzka()
-        {
-        }
-        /*  public Double Chek_double ( string s) //Проверяет передачу дробного числа с символом запятой, преобразует запятую в точку и проверяет возможность преобразования в Double
- {
-     char ch_find = ','; // Символ, который мы ищем для замены
-     char ch_change = '.'; // Символ, который на который мы заменяем
-     s = s.Replace(ch_find, ch_change); // Тут мы меняем символы
-     //Тут мы ловим возможну ошибку преобразования в Double
-     try 
-     {
-         return Convert.ToDouble(s);
-     }
+         public Nagruzka()
+         {
+         }
+         /*  public Double Chek_double ( string s) //Проверяет передачу дробного числа с символом запятой, преобразует запятую в точку и проверяет возможность преобразования в Double
+  {
+      char ch_find = ','; // Символ, который мы ищем для замены
+      char ch_change = '.'; // Символ, который на который мы заменяем
+      s = s.Replace(ch_find, ch_change); // Тут мы меняем символы
+      //Тут мы ловим возможну ошибку преобразования в Double
+      try 
+      {
+          return Convert.ToDouble(s);
+      }
 
-     catch (Exception ex) 
-     {
-        MessageBox.Show($"Исключение: {ex.Message}"); // Тут мы выдаем сообщение о возникновении исключения
-        s = s.Remove (s.Length); //Тут мы очищаем строку
-     }
+      catch (Exception ex) 
+      {
+         MessageBox.Show($"Исключение: {ex.Message}"); // Тут мы выдаем сообщение о возникновении исключения
+         s = s.Remove (s.Length); //Тут мы очищаем строку
+      }
 
- }*/
+  }*/
     }
 }

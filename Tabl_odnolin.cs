@@ -9,8 +9,8 @@ namespace circuit_generator
     class Tabl_odnolin  // Таблица для рисования схемы
     {
         Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; } // Таблица над которрой мы выполняем действия
-                                                                                // public Autodesk.AutoCAD.ApplicationServices.Application Acad { get; set; } // Таблица над которрой мы выполняем действия
-                                                                                //Нужно добавить перегрузку в зависимости от типа передаваемого аргумента. Сейчас передается таблица Excel. Нужно добавить тот же способ для передачи приложения или листа Autocad
+                                                                         // public Autodesk.AutoCAD.ApplicationServices.Application Acad { get; set; } // Таблица над которрой мы выполняем действия
+                                                                         //Нужно добавить перегрузку в зависимости от типа передаваемого аргумента. Сейчас передается таблица Excel. Нужно добавить тот же способ для передачи приложения или листа Autocad
         public void Draw()
         {
             Draw_left();
@@ -35,10 +35,10 @@ namespace circuit_generator
             if (b1 == true)
             {
                 MessageBox.Show("Шкаф не может называться как лист, может быть как нибудь назовем шкаф?");
-               
+
                 Rename r1 = new Rename();
                 r1.Show();
-               
+
             }
             else Draw();
             //Draw(worksheet);

@@ -8,7 +8,7 @@ namespace circuit_generator
         public Form_nagruzka()
         {
             InitializeComponent();
-           
+
 
         }
         protected void Form_nagruzka_Load(object sender, EventArgs e)
@@ -19,10 +19,11 @@ namespace circuit_generator
             listBox2.DataSource = Nagruzka.GetType();
             listBox3.DataSource = Nagruzka.GetHarakter();
             listBox4.DataSource = Nagruzka.GetTypeNetwork();
+            comboBox2.DataSource = Nagruzka.GetStandartCosf();
 
             label1.Text = Convert.ToString(Convert.ToDouble(comboBox1.Text.ToString()) * 1000 / Convert.ToDouble(comboBox5.Text.ToString()));
 
-           
+
 
         }
         private void Form_nagruzka_FormClosed(object sender, FormClosedEventArgs e)
@@ -33,7 +34,7 @@ namespace circuit_generator
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
-           // listBox3.Enabled = !checkBox.Checked;
+                                                  // listBox3.Enabled = !checkBox.Checked;
 
 
             if (checkBox.Checked == true)
@@ -67,8 +68,8 @@ namespace circuit_generator
         {
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
 
-          //  groupBox9.Visible = checkBox.Checked;
-           // groupBox10.Visible = checkBox.Checked;
+            //  groupBox9.Visible = checkBox.Checked;
+            // groupBox10.Visible = checkBox.Checked;
 
         }
 
@@ -84,7 +85,7 @@ namespace circuit_generator
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,12 +100,12 @@ namespace circuit_generator
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)

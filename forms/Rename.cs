@@ -39,7 +39,7 @@ namespace circuit_generator
 
         private void Rename_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
         }
     }
 }

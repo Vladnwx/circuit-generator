@@ -19,7 +19,7 @@ namespace circuit_generator
         {
             Form_nagruzka f1 = new Form_nagruzka();
             f1.Show();
-           // f1.Dispose();
+            // f1.Dispose();
         }
 
         private void button3_Click(object sender, RibbonControlEventArgs e)

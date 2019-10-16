@@ -205,35 +205,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Current.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form_current.cs">
+    <Compile Include="forms\Form_current.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_current.Designer.cs">
+    <Compile Include="forms\Form_current.Designer.cs">
       <DependentUpon>Form_current.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_nagruzka.cs">
+    <Compile Include="forms\Form_nagruzka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_nagruzka.Designer.cs">
+    <Compile Include="forms\Form_nagruzka.Designer.cs">
       <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="addon\GlobalSuppressions.cs" />
     <Compile Include="Nagruzka.cs" />
     <Compile Include="Fider.cs" />
-    <Compile Include="Rename.cs">
+    <Compile Include="forms\Rename.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rename.Designer.cs">
+    <Compile Include="forms\Rename.Designer.cs">
       <DependentUpon>Rename.cs</DependentUpon>
     </Compile>
     <Compile Include="Tabl_odnolin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="Form_current.resx">
+    <EmbeddedResource Include="forms\Form_current.resx">
       <DependentUpon>Form_current.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_nagruzka.resx">
+    <EmbeddedResource Include="forms\Form_nagruzka.resx">
       <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -246,14 +246,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Rename.resx">
+    <EmbeddedResource Include="forms\Rename.resx">
       <DependentUpon>Rename.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ribbon1.resx">
+    <EmbeddedResource Include="addon\Ribbon1.resx">
       <DependentUpon>Ribbon1.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="circuit generator_TemporaryKey.pfx" />
+    <None Include="addon\app.config" />
+    <None Include="addon\circuit generator_TemporaryKey.pfx" />
     <None Include="ClassDiagram1.cd" />
     <None Include="Current.xsc">
       <DependentUpon>Current.xsd</DependentUpon>
@@ -266,7 +266,7 @@
     <None Include="Current.xss">
       <DependentUpon>Current.xsd</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="addon\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -276,10 +276,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Ribbon1.cs">
+    <Compile Include="addon\Ribbon1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Ribbon1.Designer.cs">
+    <Compile Include="addon\Ribbon1.Designer.cs">
       <DependentUpon>Ribbon1.cs</DependentUpon>
     </Compile>
     <Compile Include="ThisAddIn.cs">
@@ -326,7 +326,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>circuit generator_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>addon\circuit generator_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
