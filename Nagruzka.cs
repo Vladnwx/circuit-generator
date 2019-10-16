@@ -65,19 +65,19 @@ namespace circuit_generator
 
         public void GetFromSheet() // Получает данные из ячейки
         {
-            Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-            ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
+            this.Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            this.ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
             try
             {
                 //NumberOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
 
-                Power = Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value;
+                Power = this.Worksheet.Cells[Constants.Fider.Row.P, this.ActiveColuumn].Value;
 
-                Cosphi = Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value;
+                Cosphi = this.Worksheet.Cells[Constants.Fider.Row.Cos, this.ActiveColuumn].Value;
 
-                Start = Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value;
+                Start = this.Worksheet.Cells[Constants.Fider.Row.Start, this.ActiveColuumn].Value;
 
-                Source = Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value;
+                Source = this.Worksheet.Cells[Constants.Fider.Row.Finish, this.ActiveColuumn].Value;
             }
 
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace circuit_generator
             }
 
         }
-        public void WriteToSheet(double NumberOfPhases, double Power, double Cosphi, string Start, string Source) // Добавляет нагрузку на лист
+        public void WriteToSheet(string NumberOfPhases, string Power, string Voltage, string Cosphi, string Start, string Source) // Добавляет нагрузку на лист
         {
             Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
 
@@ -94,11 +94,13 @@ namespace circuit_generator
 
             try
             {
-                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = NumberOfPhases;
+                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = Convert.ToDouble(NumberOfPhases);
 
-                Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Power;
+                Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Convert.ToDouble(Power);
 
-                Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Cosphi;
+                Worksheet.Cells[Constants.Fider.Row.U, ActiveColuumn].Value = Convert.ToDouble(Voltage);
+
+                Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Convert.ToDouble(Cosphi);
 
                 Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
 

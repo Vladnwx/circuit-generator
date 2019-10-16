@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAddNagruzka = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxNumberOfPhases = new System.Windows.Forms.ListBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStandartPower = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStandartCosf = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStart = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBoxSource = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBoxHarakter = new System.Windows.Forms.ListBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBoxType = new System.Windows.Forms.ListBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.listBoxTypeNetwork = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStandartVoltage = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -76,22 +76,22 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // button1
+            // buttonAddNagruzka
             // 
-            this.button1.AutoSize = true;
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.Location = new System.Drawing.Point(368, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Добавить нагрузку";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddNagruzka.AutoSize = true;
+            this.buttonAddNagruzka.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonAddNagruzka.Location = new System.Drawing.Point(368, 229);
+            this.buttonAddNagruzka.Name = "buttonAddNagruzka";
+            this.buttonAddNagruzka.Size = new System.Drawing.Size(115, 23);
+            this.buttonAddNagruzka.TabIndex = 19;
+            this.buttonAddNagruzka.Text = "Добавить нагрузку";
+            this.buttonAddNagruzka.UseVisualStyleBackColor = true;
+            this.buttonAddNagruzka.Click += new System.EventHandler(this.buttonAddNagruzka_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.RadioButton;
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.listBoxNumberOfPhases);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(110, 80);
@@ -99,15 +99,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Количество фаз";
             // 
-            // listBox1
+            // listBoxNumberOfPhases
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 16);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(104, 61);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxNumberOfPhases.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxNumberOfPhases.FormattingEnabled = true;
+            this.listBoxNumberOfPhases.Location = new System.Drawing.Point(3, 16);
+            this.listBoxNumberOfPhases.Name = "listBoxNumberOfPhases";
+            this.listBoxNumberOfPhases.Size = new System.Drawing.Size(104, 61);
+            this.listBoxNumberOfPhases.TabIndex = 0;
+            this.listBoxNumberOfPhases.SelectedIndexChanged += new System.EventHandler(this.listBoxNumberOfPhases_SelectedIndexChanged);
             // 
             // checkBox2
             // 
@@ -118,11 +118,10 @@
             this.checkBox2.TabIndex = 25;
             this.checkBox2.Text = "Расширенный вариант добавления";
             this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.comboBoxStandartPower);
             this.groupBox2.Location = new System.Drawing.Point(110, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(110, 80);
@@ -130,19 +129,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Мощность,  кВт";
             // 
-            // comboBox1
+            // comboBoxStandartPower
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxStandartPower.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxStandartPower.FormattingEnabled = true;
+            this.comboBoxStandartPower.Location = new System.Drawing.Point(3, 16);
+            this.comboBoxStandartPower.Name = "comboBoxStandartPower";
+            this.comboBoxStandartPower.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxStandartPower.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.comboBoxStandartCosf);
             this.groupBox3.Location = new System.Drawing.Point(220, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(110, 80);
@@ -150,19 +148,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Косинус нагрузки";
             // 
-            // comboBox2
+            // comboBoxStandartCosf
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(3, 16);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(104, 21);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBoxStandartCosf.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxStandartCosf.FormattingEnabled = true;
+            this.comboBoxStandartCosf.Location = new System.Drawing.Point(3, 16);
+            this.comboBoxStandartCosf.Name = "comboBoxStandartCosf";
+            this.comboBoxStandartCosf.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxStandartCosf.TabIndex = 0;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.comboBox3);
+            this.groupBox4.Controls.Add(this.comboBoxStart);
             this.groupBox4.Location = new System.Drawing.Point(330, 0);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(110, 80);
@@ -170,19 +167,18 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Начало нагрузки";
             // 
-            // comboBox3
+            // comboBoxStart
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(3, 16);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(104, 21);
-            this.comboBox3.TabIndex = 0;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.comboBoxStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxStart.FormattingEnabled = true;
+            this.comboBoxStart.Location = new System.Drawing.Point(3, 16);
+            this.comboBoxStart.Name = "comboBoxStart";
+            this.comboBoxStart.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxStart.TabIndex = 0;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.comboBox4);
+            this.groupBox5.Controls.Add(this.comboBoxSource);
             this.groupBox5.Location = new System.Drawing.Point(330, 86);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(110, 80);
@@ -190,19 +186,18 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Местоположение нагрузки";
             // 
-            // comboBox4
+            // comboBoxSource
             // 
-            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(3, 16);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(104, 21);
-            this.comboBox4.TabIndex = 0;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.comboBoxSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxSource.FormattingEnabled = true;
+            this.comboBoxSource.Location = new System.Drawing.Point(3, 16);
+            this.comboBoxSource.Name = "comboBoxSource";
+            this.comboBoxSource.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxSource.TabIndex = 0;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.listBox3);
+            this.groupBox6.Controls.Add(this.listBoxHarakter);
             this.groupBox6.Location = new System.Drawing.Point(120, 172);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(110, 80);
@@ -210,18 +205,18 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Характер нагрузки";
             // 
-            // listBox3
+            // listBoxHarakter
             // 
-            this.listBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(3, 16);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(104, 61);
-            this.listBox3.TabIndex = 0;
+            this.listBoxHarakter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHarakter.FormattingEnabled = true;
+            this.listBoxHarakter.Location = new System.Drawing.Point(3, 16);
+            this.listBoxHarakter.Name = "listBoxHarakter";
+            this.listBoxHarakter.Size = new System.Drawing.Size(104, 61);
+            this.listBoxHarakter.TabIndex = 0;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.listBox2);
+            this.groupBox7.Controls.Add(this.listBoxType);
             this.groupBox7.Location = new System.Drawing.Point(4, 172);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(110, 80);
@@ -229,19 +224,18 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Тип нагрузки";
             // 
-            // listBox2
+            // listBoxType
             // 
-            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(3, 16);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(104, 61);
-            this.listBox2.TabIndex = 0;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.listBoxType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxType.FormattingEnabled = true;
+            this.listBoxType.Location = new System.Drawing.Point(3, 16);
+            this.listBoxType.Name = "listBoxType";
+            this.listBoxType.Size = new System.Drawing.Size(104, 61);
+            this.listBoxType.TabIndex = 0;
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.listBox4);
+            this.groupBox8.Controls.Add(this.listBoxTypeNetwork);
             this.groupBox8.Location = new System.Drawing.Point(4, 258);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(276, 80);
@@ -249,35 +243,33 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Тип применяемой сети на комплексную нагрузку";
             // 
-            // listBox4
+            // listBoxTypeNetwork
             // 
-            this.listBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(3, 16);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(270, 61);
-            this.listBox4.TabIndex = 0;
+            this.listBoxTypeNetwork.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxTypeNetwork.FormattingEnabled = true;
+            this.listBoxTypeNetwork.Location = new System.Drawing.Point(3, 16);
+            this.listBoxTypeNetwork.Name = "listBoxTypeNetwork";
+            this.listBoxTypeNetwork.Size = new System.Drawing.Size(270, 61);
+            this.listBoxTypeNetwork.TabIndex = 0;
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.comboBox5);
+            this.groupBox9.Controls.Add(this.comboBoxStandartVoltage);
             this.groupBox9.Location = new System.Drawing.Point(1, 83);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(110, 80);
             this.groupBox9.TabIndex = 25;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Напряжение";
-            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
-            // comboBox5
+            // comboBoxStandartVoltage
             // 
-            this.comboBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(3, 16);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(104, 21);
-            this.comboBox5.TabIndex = 0;
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            this.comboBoxStandartVoltage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxStandartVoltage.FormattingEnabled = true;
+            this.comboBoxStandartVoltage.Location = new System.Drawing.Point(3, 16);
+            this.comboBoxStandartVoltage.Name = "comboBoxStandartVoltage";
+            this.comboBoxStandartVoltage.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxStandartVoltage.TabIndex = 0;
             // 
             // groupBox10
             // 
@@ -288,7 +280,6 @@
             this.groupBox10.TabIndex = 26;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Ток";
-            this.groupBox10.Enter += new System.EventHandler(this.groupBox10_Enter);
             // 
             // label1
             // 
@@ -300,7 +291,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form_nagruzka
             // 
@@ -321,7 +311,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAddNagruzka);
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Form_nagruzka";
             this.Text = "Добавление нагрузки";
@@ -345,7 +335,7 @@
 
         #endregion
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAddNagruzka;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -357,15 +347,15 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ComboBox comboBoxStandartPower;
+        private System.Windows.Forms.ComboBox comboBoxStart;
+        private System.Windows.Forms.ComboBox comboBoxSource;
+        private System.Windows.Forms.ComboBox comboBoxStandartVoltage;
+        private System.Windows.Forms.ListBox listBoxNumberOfPhases;
+        private System.Windows.Forms.ListBox listBoxHarakter;
+        private System.Windows.Forms.ListBox listBoxType;
+        private System.Windows.Forms.ListBox listBoxTypeNetwork;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxStandartCosf;
     }
 }
