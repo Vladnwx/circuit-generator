@@ -1,14 +1,13 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace circuit_generator
 {
     public class Nagruzka
     {
-
         Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; }
-       
         private static readonly List<string> NumberOfPhases = new List<string>() { "1", "2", "3" };
         public static List<string> GetNumberOfPhases()
         {
@@ -45,13 +44,11 @@ namespace circuit_generator
         {
             return StandartCosf;
         }
-
         private static readonly List<string> Type = new List<string>() { "конечная", "промежуточная" }; // Тип нагрузки
         public static List<string> GetType()
         {
             return Type;
         }
-
         private double Power { get; set; } // Мощность в кВт, добавить проверку мощности (она не может быть отрицательной)
 
         //добавить список типовых косинусов в зависимости от выбранных характеров
@@ -66,12 +63,37 @@ namespace circuit_generator
         int ActiveColuumn { get; set; } // Номер столбца для нагрузки
 
 
-        public void AddToSheet() // Добавляет нагрузку на лист
+public void GetFromSheet() // Получает данные из ячейки
+{
+    Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+    ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
+    try
+    {
+         NumberOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
+
+         Power = Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value;
+
+         Cosphi = Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value;
+
+         Start =  Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value;
+
+         Source =  Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value;
+    }
+
+catch (Exception ex)
+{
+MessageBox.Show(ex.Message);
+}
+
+}
+        public void WriteToSheet() // Добавляет нагрузку на лист
         {
             Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
 
             ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
 
+           try
+     {
             Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = NumberOfPhases;
 
             Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Power;
@@ -81,6 +103,13 @@ namespace circuit_generator
             Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
 
             Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
+            }
+
+catch (Exception ex)
+{
+MessageBox.Show(ex.Message);
+}
+
 
             Globals.ThisAddIn.Application.ActiveWorkbook.Save();
         }
