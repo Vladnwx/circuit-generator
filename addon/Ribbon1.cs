@@ -8,6 +8,13 @@ namespace circuit_generator
         public void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {
             //MessageBox.Show("Hello, world!");
+
+            bool b = CheckOnlinegen();
+            if (b)
+            {
+            Tabl_odnolin t1 = new Tabl_odnolin();
+            t1.Check();
+            }
         }
         private void Button1_Click_1(object sender, RibbonControlEventArgs e)
         {
@@ -26,6 +33,27 @@ namespace circuit_generator
         {
 
         }
+
+           public bool CheckCircuitGenerator()
+    {
+        string s = Globals.ThisAddIn.Application.ActiveWorkbook(); // Тут нужно указать тег в активной книге. Данный тег будет давать информацию что мы работаем с файлом кабельного журнала и будем выполнять циклы по пересчету кабельных линий
+        if (s = "CircuitGenerator")
+        {
+        return true;
+        } 
+        else return false;
+    }
+
+public void SetCircuitGenerator()
+{
+    if (!CheckCircuitGenerator())
+    {
+       // Globals.ThisAddIn.Application.ActiveWorkbook; // Тут мы вставляем тег в активную книгу. Данный тег будет давать информацию что мы работаем с файлом кабельного журнала и будем выполнять циклы по пересчету кабельных линий
+    }
+}
+
+
+
     }
 
 
