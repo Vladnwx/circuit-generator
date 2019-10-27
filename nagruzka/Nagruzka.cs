@@ -5,13 +5,14 @@ using System.Windows.Forms;
 
 namespace circuit_generator
 {
-    public class Nagruzka
+    public partial class Nagruzka
     {
         Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; }
-        private static readonly List<string> NumberOfPhases = new List<string>() { "1", "2", "3" };
+        private static readonly List<string> StandartNumbersOfPhases = new List<string>() { "1", "2", "3" }; //число фаз
+        private static readonly List<string> NumberPhases = new List<string>() { "L1", "L2", "L3", "L1 L2 L3" }; // номер фазы
         public static List<string> GetNumberOfPhases()
         {
-            return NumberOfPhases;
+            return StandartNumbersOfPhases;
         }
         private static readonly List<double> StandartVoltage = new List<double>() { 220D, 380D, 24D, 12D, 230D, 400D };
         public static List<double> GetStandartVoltage()
@@ -49,6 +50,11 @@ namespace circuit_generator
         {
             return Type;
         }
+
+        private int NumbersOfPhases { get; set; } // Число фаз
+        private int NumberPhase { get; set; } // Номер фазы
+        private double Voltage { get; set; } // Напряжение в Вольтах
+
         private double Power { get; set; } // Мощность в кВт, добавить проверку мощности (она не может быть отрицательной)
 
         //добавить список типовых косинусов в зависимости от выбранных характеров
@@ -63,85 +69,64 @@ namespace circuit_generator
         int ActiveColuumn { get; set; } // Номер столбца для нагрузки
 
 
-        public void GetFromSheet() // Получает данные из ячейки
+        
+        
+
+        
+
+        public void  AutoSortPhase() // выбирает  номер фазы для нагрузки
         {
             this.Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-            this.ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
+
+            int column = Constants.Fider.Column.First;
+
+            //Worksheet.Cells[Constants.Fider.Row.Phase, column]
+
             try
             {
-                //NumberOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
+                
+            }
 
-                Power = this.Worksheet.Cells[Constants.Fider.Row.P, this.ActiveColuumn].Value;
-
-                Cosphi = this.Worksheet.Cells[Constants.Fider.Row.Cos, this.ActiveColuumn].Value;
-
-                Start = this.Worksheet.Cells[Constants.Fider.Row.Start, this.ActiveColuumn].Value;
-
-                Source = this.Worksheet.Cells[Constants.Fider.Row.Finish, this.ActiveColuumn].Value;
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Передаваемые значения мощности, напряжения и косинуса должны быть числом");
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-        public void WriteToSheet(string NumberOfPhases, string Power, string Voltage, string Cosphi, string Start, string Source) // Добавляет нагрузку на лист
-        {
-            Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+    
 
-            ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
-
-            try
-            {
-                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = Convert.ToDouble(NumberOfPhases);
-
-                Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Convert.ToDouble(Power);
-
-                Worksheet.Cells[Constants.Fider.Row.U, ActiveColuumn].Value = Convert.ToDouble(Voltage);
-
-                Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Convert.ToDouble(Cosphi);
-
-                Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
-
-                Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
-            Globals.ThisAddIn.Application.ActiveWorkbook.Save();
-        }
+        //public void  // Пересчитывет таблицу распределения по фазам
 
 
 
         /*   public Nagruzka() : this("Неизвестно") // Конструктор без параметров
            {
            }
-           public Nagruzka(string NumberOfPhases) : this(NumberOfPhases, "Неизвестно") // Конструктор с указанием только числа фаз
+           public Nagruzka(string StandartNumbersOfPhases) : this(StandartNumbersOfPhases, "Неизвестно") // Конструктор с указанием только числа фаз
            {
            }
-           public Nagruzka(string NumberOfPhases, string Power) : this(Source, Power, "Неизвестно") // Конструктор c мощностью
+           public Nagruzka(string StandartNumbersOfPhases, string Power) : this(Source, Power, "Неизвестно") // Конструктор c мощностью
            {
            }*/
-        /*  public Nagruzka(string NumberOfPhases, string Power, string Cosphi) : this(Source, Power, Cosphi, "Неизвестно") // Конструктор с косинусом
+        /*  public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi) : this(Source, Power, Cosphi, "Неизвестно") // Конструктор с косинусом
           {
           }*/
-        /*   public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox) : this(Source, Power, Cosphi, bool StartInBox, "Неизвестно") // Конструктор с указанием начала в щите
+        /*   public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool StartInBox) : this(Source, Power, Cosphi, bool StartInBox, "Неизвестно") // Конструктор с указанием начала в щите
            {
            }*/
-        /*  public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox, string Start) : this(Source, Power, Cosphi, bool StartInBox, string Start, "Неизвестно") // Конструктор с указанием начала нагрузки
+        /*  public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool StartInBox, string Start) : this(Source, Power, Cosphi, bool StartInBox, string Start, "Неизвестно") // Конструктор с указанием начала нагрузки
           {
           }
-          public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool StartInBox, string Start, string Source) : this(Source, Power, Cosphi, bool StartInBox, string Start, string Source, "Неизвестно") // Конструктор с указанием конца нагрузки
+          public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool StartInBox, string Start, string Source) : this(Source, Power, Cosphi, bool StartInBox, string Start, string Source, "Неизвестно") // Конструктор с указанием конца нагрузки
           {
           }*/
-        /* public Nagruzka(string NumberOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
+        /* public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
          {
-             this.NumberOfPhases = NumberOfPhases;
+             this.StandartNumbersOfPhases = StandartNumbersOfPhases;
              this.Power = Convert.ToDouble(Power);
              this.Cosphi = Convert.ToDouble(Cosphi);
              this.StartInBox = Convert.ToBoolean(Start_load_in_box);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
+using System.Windows.Forms;
 
 namespace circuit_generator
 {
@@ -9,7 +10,7 @@ namespace circuit_generator
         {
             //MessageBox.Show("Hello, world!");
 
-            bool b = CheckOnlinegen();
+            bool b = CheckCircuitGenerator();
             if (b)
             {
             Tabl_odnolin t1 = new Tabl_odnolin();
@@ -19,7 +20,7 @@ namespace circuit_generator
         private void Button1_Click_1(object sender, RibbonControlEventArgs e)
         {
             Tabl_odnolin t1 = new Tabl_odnolin();
-            t1.Check();
+            t1.Draw();
             // t1.Draw(Globals.ThisAddIn.Application.ActiveSheet);
         }
         private void button2_Click(object sender, RibbonControlEventArgs e)
@@ -31,25 +32,51 @@ namespace circuit_generator
 
         private void button3_Click(object sender, RibbonControlEventArgs e)
         {
+            SetCircuitGenerator();
 
         }
 
            public bool CheckCircuitGenerator()
     {
-        string s = Globals.ThisAddIn.Application.ActiveWorkbook(); // Тут нужно указать тег в активной книге. Данный тег будет давать информацию что мы работаем с файлом кабельного журнала и будем выполнять циклы по пересчету кабельных линий
-        if (s = "CircuitGenerator")
-        {
-        return true;
-        } 
-        else return false;
-    }
+            //Microsoft.Office.Core.DocumentProperties properties;
+
+           // string properties = Globals.ThisAddIn.Application.ActiveWorkbook.Author.ToString();
+            //properties = Globals.ThisAddIn.Application.ActiveWorkbook.BuiltinDocumentProperties();
+
+            
+
+          //  Microsoft.Office.Core.DocumentProperty prop;
+
+         //   MessageBox.Show(properties);
+
+            //prop = properties["Revision Number"];
+
+
+            // Тут нужно указать тег в активной книге. Данный тег будет давать информацию что мы работаем с файлом кабельного журнала и будем выполнять циклы по пересчету кабельных линий
+
+
+            // Microsoft.Office.Core.DocumentProperty prop;
+            //prop = properties["Revision Number"];
+
+            // if (prop.Value == "CircuitGenerator")
+            //  {
+            //  return true;
+            // } 
+            // else return false;
+            return true;
+        }
 
 public void SetCircuitGenerator()
 {
     if (!CheckCircuitGenerator())
     {
-       // Globals.ThisAddIn.Application.ActiveWorkbook; // Тут мы вставляем тег в активную книгу. Данный тег будет давать информацию что мы работаем с файлом кабельного журнала и будем выполнять циклы по пересчету кабельных линий
-    }
+                Microsoft.Office.Core.DocumentProperties properties = Globals.ThisAddIn.Application.ActiveWorkbook.BuiltinDocumentProperties; 
+                Microsoft.Office.Core.DocumentProperty prop;
+                prop = properties["Tag"];
+
+                prop.Value = "CircuitGenerator";
+               
+            }
 }
 
 

@@ -194,9 +194,10 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Avtomat.cs" />
-    <Compile Include="Cable.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="addon\FormatCell.cs" />
+    <Compile Include="constants\Avtomat.cs" />
+    <Compile Include="cable\Cable.cs" />
+    <Compile Include="constants\Constants.cs" />
     <Compile Include="Current.cs">
       <DependentUpon>Current.xsd</DependentUpon>
     </Compile>
@@ -218,15 +219,18 @@
       <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </Compile>
     <Compile Include="addon\GlobalSuppressions.cs" />
-    <Compile Include="Nagruzka.cs" />
-    <Compile Include="Fider.cs" />
+    <Compile Include="nagruzka\Check.cs" />
+    <Compile Include="nagruzka\GetFromSheet.cs" />
+    <Compile Include="nagruzka\WriteToSheet.cs" />
+    <Compile Include="nagruzka\Nagruzka.cs" />
+    <Compile Include="fider\Fider.cs" />
     <Compile Include="forms\Rename.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\Rename.Designer.cs">
       <DependentUpon>Rename.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tabl_odnolin.cs" />
+    <Compile Include="constants\Tabl_odnolin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

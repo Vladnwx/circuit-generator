@@ -32,9 +32,14 @@
                 {
                     public const int Start = Constants.Tabl.Left.Row.Start; // Номер строки, с которого начинается таблица схемы (срока 4)
                 }
+                public const string Value1 = "Нагрузка по фазам, кВт";
+                public const string Value2 = "L1";
+                public const string Value3 = "L2";
+                public const string Value4 = "L3";
+                public const string Value5 = "Перекос по фазам:";
             }
 
-            public static class NPotreb
+            public static class Potreb
             {
                 public static class Column
                 {
@@ -44,8 +49,11 @@
                 {
                     public const int Start = Constants.Tabl.Left.Row.Start; // Номер строки, с которого начинается таблица схемы (срока 4)
                 }
+                public const string Value1 = "Потребность труб и кабелей, м";
+                public const string Value2 = "Тип/Марка";
+                public const string Value3 = "Длина, м";
             }
-            public static class vvod
+            public static class Vvod
             {
                 public static class Column
                 {
@@ -59,6 +67,11 @@
                     public const int QF_setpoint = QF_type + 1; // Номер строки, в которую пишется уставка вводного автомата
                     public const int QF_p = QF_setpoint + 1; // Номер строки, в которую пишется количество полюсов вводного автомата
                 }
+                public const string Value1 = "Руст,кВт";
+                public const string Value2 = "Kc";
+                public const string Value3 = "Рр,кВт";
+                public const string Value4 = "Ip,A";
+                public const string Value5 = "cos f";
 
             }
         }
