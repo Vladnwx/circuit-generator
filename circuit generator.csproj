@@ -198,20 +198,6 @@
     <Compile Include="constants\Avtomat.cs" />
     <Compile Include="cable\Cable.cs" />
     <Compile Include="constants\Constants.cs" />
-    <Compile Include="Current.cs">
-      <DependentUpon>Current.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Current.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Current.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="forms\Form_current.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\Form_current.Designer.cs">
-      <DependentUpon>Form_current.cs</DependentUpon>
-    </Compile>
     <Compile Include="forms\Form_nagruzka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +206,13 @@
     </Compile>
     <Compile Include="addon\GlobalSuppressions.cs" />
     <Compile Include="nagruzka\Check.cs" />
+    <Compile Include="nagruzka\CalculateCurrent.cs" />
+    <Compile Include="nagruzka\AutoSortPhase.cs" />
+    <Compile Include="nagruzka\GenStandartList.cs" />
+    <Compile Include="nagruzka\Constructors.cs" />
+    <Compile Include="nagruzka\SelectCosphi.cs" />
+    <Compile Include="nagruzka\SelectVoltage.cs" />
+    <Compile Include="nagruzka\SelectNumberPhase.cs" />
     <Compile Include="nagruzka\GetFromSheet.cs" />
     <Compile Include="nagruzka\WriteToSheet.cs" />
     <Compile Include="nagruzka\Nagruzka.cs" />
@@ -234,9 +227,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="forms\Form_current.resx">
-      <DependentUpon>Form_current.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="forms\Form_nagruzka.resx">
       <DependentUpon>Form_nagruzka.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,18 +248,6 @@
     </EmbeddedResource>
     <None Include="addon\app.config" />
     <None Include="addon\circuit generator_TemporaryKey.pfx" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="Current.xsc">
-      <DependentUpon>Current.xsd</DependentUpon>
-    </None>
-    <None Include="Current.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Current.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Current.xss">
-      <DependentUpon>Current.xsd</DependentUpon>
-    </None>
     <None Include="addon\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

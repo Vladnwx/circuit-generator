@@ -20,14 +20,15 @@ namespace circuit_generator
             }
             try
             {
-                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = Convert.ToString(NumbersOfPhases);
+                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = Convert.ToDouble(NumbersOfPhases);
                 Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Convert.ToDouble(Power);
                 Worksheet.Cells[Constants.Fider.Row.U, ActiveColuumn].Value = Convert.ToDouble(Voltage);
                 Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Convert.ToDouble(Cosphi);
                 Worksheet.Cells[Constants.Fider.Row.I, ActiveColuumn].Value = Convert.ToDouble(Current);
                 Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
                 Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
-                var l1 = new List<int> { Constants.Fider.Row.Phase, Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
+                
+                var l1 = new List<int> { Constants.Fider.Row.Id, Constants.Fider.Row.Image, Constants.Fider.Row.Id,  Constants.Fider.Row.Phase, Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.I , Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
                 foreach (int element in l1)
                 {
                     FormatCell f1 = new FormatCell();
