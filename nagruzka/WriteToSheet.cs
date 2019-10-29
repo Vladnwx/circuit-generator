@@ -1,9 +1,6 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace circuit_generator
@@ -13,7 +10,7 @@ namespace circuit_generator
         public void WriteToSheet(string NumberOfPhases, string Power, string Voltage, string Cosphi, string Start, string Source) // Добавляет нагрузку на лист
         {
             Microsoft.Office.Interop.Excel.Worksheet Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-           int ActiveColuumn = Constants.Fider.Column.First;
+            int ActiveColuumn = Constants.Fider.Column.First;
             while (Check(ref ActiveColuumn))
             {
                 ActiveColuumn += 2;
@@ -27,8 +24,8 @@ namespace circuit_generator
                 Worksheet.Cells[Constants.Fider.Row.I, ActiveColuumn].Value = Convert.ToDouble(Current);
                 Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
                 Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
-                
-                var l1 = new List<int> { Constants.Fider.Row.Id, Constants.Fider.Row.Image, Constants.Fider.Row.Id,  Constants.Fider.Row.Phase, Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.I , Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
+
+                var l1 = new List<int> { Constants.Fider.Row.Id, Constants.Fider.Row.Image, Constants.Fider.Row.Id, Constants.Fider.Row.Phase, Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.I, Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
                 foreach (int element in l1)
                 {
                     FormatCell f1 = new FormatCell();
@@ -36,7 +33,7 @@ namespace circuit_generator
                 }
                 //return count == l1.Count;
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 MessageBox.Show("Передаваемые значения мощности, напряжения и косинуса должны быть числом");
             }

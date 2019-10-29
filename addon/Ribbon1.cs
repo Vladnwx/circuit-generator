@@ -1,5 +1,4 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
-using System.Windows.Forms;
 
 namespace circuit_generator
 {
@@ -13,8 +12,8 @@ namespace circuit_generator
             bool b = CheckCircuitGenerator();
             if (b)
             {
-            Tabl_odnolin t1 = new Tabl_odnolin();
-            t1.Check();
+                Tabl_odnolin t1 = new Tabl_odnolin();
+                t1.Check();
             }
         }
         private void Button1_Click_1(object sender, RibbonControlEventArgs e)
@@ -36,18 +35,18 @@ namespace circuit_generator
 
         }
 
-           public bool CheckCircuitGenerator()
-    {
+        public bool CheckCircuitGenerator()
+        {
             //Microsoft.Office.Core.DocumentProperties properties;
 
-           // string properties = Globals.ThisAddIn.Application.ActiveWorkbook.Author.ToString();
+            // string properties = Globals.ThisAddIn.Application.ActiveWorkbook.Author.ToString();
             //properties = Globals.ThisAddIn.Application.ActiveWorkbook.BuiltinDocumentProperties();
 
-            
 
-          //  Microsoft.Office.Core.DocumentProperty prop;
 
-         //   MessageBox.Show(properties);
+            //  Microsoft.Office.Core.DocumentProperty prop;
+
+            //   MessageBox.Show(properties);
 
             //prop = properties["Revision Number"];
 
@@ -66,18 +65,18 @@ namespace circuit_generator
             return true;
         }
 
-public void SetCircuitGenerator()
-{
-    if (!CheckCircuitGenerator())
-    {
-                Microsoft.Office.Core.DocumentProperties properties = Globals.ThisAddIn.Application.ActiveWorkbook.BuiltinDocumentProperties; 
+        public void SetCircuitGenerator()
+        {
+            if (!CheckCircuitGenerator())
+            {
+                Microsoft.Office.Core.DocumentProperties properties = Globals.ThisAddIn.Application.ActiveWorkbook.BuiltinDocumentProperties;
                 Microsoft.Office.Core.DocumentProperty prop;
                 prop = properties["Tag"];
 
                 prop.Value = "CircuitGenerator";
-               
+
             }
-}
+        }
 
 
 

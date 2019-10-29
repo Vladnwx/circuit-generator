@@ -142,81 +142,81 @@
             }
         }
 
-public partial class StandartNagruzka
-    {
-        public class StandartVoltage
+        public partial class StandartNagruzka
         {
-            public const double Value1 = 220D;
-            public const double Value2 = 380D;
-            public const double Value3 = 24D;
-            public const double Value4 = 12D;
-            public const double Value5 = 230D;
-            public const double Value6 = 400D;
-        }
-        public class StandartCosf
-        {
-            public const double Value1 = 0.9D;
-            public const double Value2 = 0.95D;
-            public const double Value3 = 0.85D;
-            public const double Value4 = 0.8D;
-            public const double Value5 = 1D;
-        }
-        public class StandartNumbersOfPhases
-        {
-            public const double Value1 = 1D;
-            public const double Value2 = 2D;
-            public const double Value3 = 3D;
-        }
-        public class NumberPhases
-        {
-            public const double Value1 = 1D;
-            public const double Value2 = 2D;
-            public const double Value3 = 3D;
-            public const double Value4 = 123D;
-            public const double Value5 = 12D;
-            public const double Value6 = 23D;
-            public const double Value7 = 13D;
+            public class StandartVoltage
+            {
+                public const double Value1 = 220D;
+                public const double Value2 = 380D;
+                public const double Value3 = 24D;
+                public const double Value4 = 12D;
+                public const double Value5 = 230D;
+                public const double Value6 = 400D;
+            }
+            public class StandartCosf
+            {
+                public const double Value1 = 0.9D;
+                public const double Value2 = 0.95D;
+                public const double Value3 = 0.85D;
+                public const double Value4 = 0.8D;
+                public const double Value5 = 1D;
+            }
+            public class StandartNumbersOfPhases
+            {
+                public const double Value1 = 1D;
+                public const double Value2 = 2D;
+                public const double Value3 = 3D;
+            }
+            public class NumberPhases
+            {
+                public const double Value1 = 1D;
+                public const double Value2 = 2D;
+                public const double Value3 = 3D;
+                public const double Value4 = 123D;
+                public const double Value5 = 12D;
+                public const double Value6 = 23D;
+                public const double Value7 = 13D;
+            }
+
+            public class StandartPower
+            {
+                public const double Value1 = 1D;
+                public const double Value2 = 1.5D;
+                public const double Value3 = 2D;
+                public const double Value4 = 2.5D;
+                public const double Value5 = 3D;
+                public const double Value6 = 0.5D;
+                public const double Value7 = 0.1D;
+            }
+            public class StandartHarakter
+            {
+                public const string Value1 = "Светильники";
+                public const string Value2 = "Розетки";
+                public const string Value3 = "Двигатель";
+                public const string Value4 = "Шкаф";
+                public const string Value5 = "Комплексная нагрузка";
+            }
+            public class StandartTypeNetwork
+            {
+                public const string Value1 = "трехфазная разводка с ответвлением в коробке пофазно";
+                public const string Value2 = "однофазная прямо от щита";
+            }
+            public class StandartType
+            {
+                public const string Value1 = "конечная";
+                public const string Value2 = "промежуточная";
+            }
         }
 
-        public class StandartPower
-        {
-        public const double Value1 = 1D;
-        public const double Value2 = 1.5D;
-        public const double Value3 = 2D;
-        public const double Value4 = 2.5D;
-        public const double Value5 = 3D;
-        public const double Value6 = 0.5D;
-        public const double Value7 = 0.1D;
-        }
-    public class StandartHarakter
-{
-        public const string Value1 = "Светильники";
-        public const string Value2 = "Розетки";
-        public const string Value3 = "Двигатель";
-        public const string Value4 = "Шкаф";
-        public const string Value5 = "Комплексная нагрузка";
-}
-    public class StandartTypeNetwork 
-    {
-        public const string Value1 = "трехфазная разводка с ответвлением в коробке пофазно";
-        public const string Value2 = "однофазная прямо от щита";
+
+
+
+
+
+
     }
-    public class StandartType
-    {
-        public const string Value1 = "конечная";
-        public const string Value2 = "промежуточная";
-    }
- }
 
-
-
-
-
-
-
-    }
-    
-     public partial class Cable
+    public partial class Cable
     {
     }
     public partial class Avtomat

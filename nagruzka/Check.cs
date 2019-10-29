@@ -1,9 +1,6 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace circuit_generator
 {
@@ -12,7 +9,7 @@ namespace circuit_generator
         public static bool Check(ref int ActiveColuumn) //Проверяет есть ли данные в выбранном столбце
         {
             Microsoft.Office.Interop.Excel.Worksheet Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-           // int ActiveColuumn = Constants.Fider.Column.First;
+            // int ActiveColuumn = Constants.Fider.Column.First;
 
             var l1 = new List<int> { Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
 
@@ -28,7 +25,7 @@ namespace circuit_generator
             }
 
             return count > 0;
-            
+
         }
     }
 }
