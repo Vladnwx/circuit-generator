@@ -141,8 +141,8 @@
                 }
             }
         }
-    }
-    public partial class StandartNagruzka
+
+public partial class StandartNagruzka
     {
         public class StandartVoltage
         {
@@ -172,10 +172,10 @@
             public const double Value1 = 1D;
             public const double Value2 = 2D;
             public const double Value3 = 3D;
-            public const double Value3 = 123D;
-            public const double Value3 = 12D;
-            public const double Value3 = 23D;
-            public const double Value3 = 13D;
+            public const double Value4 = 123D;
+            public const double Value5 = 12D;
+            public const double Value6 = 23D;
+            public const double Value7 = 13D;
         }
 
         public class StandartPower
@@ -188,23 +188,37 @@
         public const double Value6 = 0.5D;
         public const double Value7 = 0.1D;
         }
-public class StandartHarakter
+    public class StandartHarakter
 {
         public const string Value1 = "Светильники";
         public const string Value2 = "Розетки";
-        public const string Value1 = "Двигатель";
-        public const string Value1 = "Шкаф";
-        public const string Value1 = "Комплексная нагрузка";
+        public const string Value3 = "Двигатель";
+        public const string Value4 = "Шкаф";
+        public const string Value5 = "Комплексная нагрузка";
 }
+    public class StandartTypeNetwork 
+    {
+        public const string Value1 = "трехфазная разводка с ответвлением в коробке пофазно";
+        public const string Value2 = "однофазная прямо от щита";
+    }
+    public class StandartType
+    {
+        public const string Value1 = "конечная";
+        public const string Value2 = "промежуточная";
+    }
+ }
+
+
+
+
+
 
 
     }
     
-    
-    public partial class Cable
+     public partial class Cable
     {
     }
-
     public partial class Avtomat
     {
     }

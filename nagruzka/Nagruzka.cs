@@ -7,9 +7,133 @@ namespace circuit_generator
 {
     public partial class Nagruzka
     {
-        Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; }
-        private static readonly List<string> StandartNumbersOfPhases = new List<string>() { "1", "2", "3" }; //число фаз
-        private static readonly List<string> NumberPhases = new List<string>() { "L1", "L2", "L3", "L1 L2 L3" }; // номер фазы
+        Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; } // Лист, с которым мы работаем
+        private double NumbersOfPhases { get; set; } // Число фаз
+        private double NumberPhase { get; set; } // Номер фазы
+        private double Voltage { get; set; } // Напряжение в Вольтах
+        private double Power { get; set; } // Мощность в кВт, добавить проверку мощности (она не может быть отрицательной)
+        private double Cosphi { get; set; } // Косинус нагрузки , добавить проверку косинуса (он не может быть больше+-1)
+        private double Current { get; set; } // Косинус нагрузки , добавить проверку косинуса (он не может быть больше+-1)
+        private bool StartInBox { get; set; } // Начало нагрузки в щите или ответвление от фидера, добавить проверку, что при отсутствии фидера невозможно поставить нагрузку как начинающуюся не от щита
+        private string Start { get; set; } // начало нагрузки
+        private string Source { get; set; } // Местоположение нагрузки
+        private string Harakter { get; set; } // Характер нагрузки
+        private string TypeNetwork { get; set; } // Тип сети
+        private string Type{ get; set; } // Тип нагрузки промежуточная/конечная
+        private int ActiveColuumn { get; set; } // Номер столбца для нагрузки
+
+        public Nagruzka() // Конструктор по умолчанию
+         {
+             NumbersOfPhases = Constants.StandartNagruzka.NumberPhases.Value1;
+             SelectNumberPhase();
+             SelectVoltage();
+             Power = Constants.StandartNagruzka.StandartPower.Value1;
+             Cosphi = Constants.StandartNagruzka.StandartCosf.Value1;
+             StartInBox = true;
+             Start = Worksheet.Name;
+             CalculateCurrent();
+         }
+private void SelectNumberPhase() // Выбирает фазу, в зависимости от количества фаз
+{
+    switch (NumbersOfPhases)
+    {
+        case 1:
+        NumberPhase = Constants.StandartNagruzka.NumberPhases.Value1;
+        break;
+        case 2:
+        NumberPhase = Constants.StandartNagruzka.NumberPhases.Value5;
+        break;
+        case 3:
+        NumberPhase = Constants.StandartNagruzka.NumberPhases.Value4;
+        break;
+        default:
+        MessageBox.Show("Количество фаз неверно");
+        NumberPhase = Constants.StandartNagruzka.NumberPhases.Value1;
+        break;
+    }
+}
+private void SelectVoltage() // Выбирает напряжение в зависимости от количества фаз
+{
+    switch (NumbersOfPhases)
+    {
+        case 1:
+        Voltage = Constants.StandartNagruzka.StandartVoltage.Value1;
+        break;
+        case 2:
+        Voltage = Constants.StandartNagruzka.StandartVoltage.Value2;
+        break;
+        case 3:
+        Voltage = Constants.StandartNagruzka.StandartVoltage.Value2;
+        break;
+        default:
+        MessageBox.Show("Выбрано неверное напряжение");
+        Voltage = Constants.StandartNagruzka.StandartVoltage.Value1;
+        break;
+    }
+}
+private void CalculateCurrent() //Рассчитывает ток в нагрузке
+{
+    try {
+            Current = (Power*1000)/(1.73D*Voltage*Cosphi);
+        }
+    catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+}
+private void SelectCosphi() // Выбирает cos phi
+{
+    switch (Harakter)
+    {
+        case Constants.StandartNagruzka.StandartHarakter.Value1:
+        Cosphi = Constants.StandartNagruzka.StandartCosf.Value2;
+        break;
+        case Constants.StandartNagruzka.StandartHarakter.Value2:
+        Cosphi = Constants.StandartNagruzka.StandartCosf.Value1;
+        break;
+        case Constants.StandartNagruzka.StandartHarakter.Value3:
+        Cosphi = Constants.StandartNagruzka.StandartCosf.Value3;
+        break;
+        case Constants.StandartNagruzka.StandartHarakter.Value4:
+        Cosphi = Constants.StandartNagruzka.StandartCosf.Value2;
+        break;
+        case Constants.StandartNagruzka.StandartHarakter.Value5:
+        Cosphi = Constants.StandartNagruzka.StandartCosf.Value5;
+        break;
+        default:
+        MessageBox.Show("Выбран неверный характер нагрузки");
+        Cosphi = Constants.StandartNagruzka.StandartCosf.Value5;
+        break;
+    }
+}
+public void  AutoSortPhase() // выбирает  номер фазы для нагрузки
+        {
+            this.Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            int ActiveColuumn = Constants.Fider.Column.First;
+            //Worksheet.Cells[Constants.Fider.Row.Phase, column]
+
+            while (Check(ref ActiveColuumn))
+            {
+                ActiveColuumn += 2;
+            }
+            try
+            {
+                
+            }
+
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Передаваемые значения мощности, напряжения и косинуса должны быть числом");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private static readonly List<string> StandartNumbersOfPhases = new List<string>() { Constants.StandartNagruzka.StandartNumbersOfPhases.Value1, Constants.StandartNagruzka.StandartNumbersOfPhases.Value2, Constants.StandartNagruzka.StandartNumbersOfPhases.Value3 }; //число фаз
+        //private static readonly List<string> NumberPhases = new List<string>() { "L1", "L2", "L3", "L1 L2 L3" }; // номер фазы
+        
         public static List<string> GetNumberOfPhases()
         {
             return StandartNumbersOfPhases;
@@ -39,7 +163,6 @@ namespace circuit_generator
         {
             return TypeNetwork;
         }
-
         private static readonly List<double> StandartCosf = new List<double>() { 0.8, 0.85, 0.9, 0.95, 1 }; // Тип нагрузки
         public static List<double> GetStandartCosf()
         {
@@ -50,59 +173,8 @@ namespace circuit_generator
         {
             return Type;
         }
-
-        private int NumbersOfPhases { get; set; } // Число фаз
-        private int NumberPhase { get; set; } // Номер фазы
-        private double Voltage { get; set; } // Напряжение в Вольтах
-
-        private double Power { get; set; } // Мощность в кВт, добавить проверку мощности (она не может быть отрицательной)
-
-        //добавить список типовых косинусов в зависимости от выбранных характеров
-        double Cosphi { get; set; } // Косинус нагрузки , добавить проверку косинуса (он не может быть больше+-1)
-
-        bool StartInBox { get; set; } // Начало нагрузки в щите или ответвление от фидера, добавить проверку, что при отсутствии фидера невозможно поставить нагрузку как начинающуюся не от щита
-
-        string Start { get; set; } // начало нагрузки
-
-        string Source { get; set; } // Местоположение нагрузки
-
-        int ActiveColuumn { get; set; } // Номер столбца для нагрузки
-
-
         
         
-
-        
-
-        public void  AutoSortPhase() // выбирает  номер фазы для нагрузки
-        {
-            this.Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-
-            int column = Constants.Fider.Column.First;
-
-            //Worksheet.Cells[Constants.Fider.Row.Phase, column]
-
-            try
-            {
-                
-            }
-
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Передаваемые значения мощности, напряжения и косинуса должны быть числом");
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-    
-
-        //public void  // Пересчитывет таблицу распределения по фазам
-
-
-
         /*   public Nagruzka() : this("Неизвестно") // Конструктор без параметров
            {
            }
