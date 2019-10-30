@@ -4,44 +4,38 @@
     {
         public Nagruzka() : this(Constants.StandartNagruzka.NumberPhases.Value1) //Конструктор по умолчанию
         { }
-          public Nagruzka(double NumbersOfPhases) // Конструктор с указанием числа фаз
+          public Nagruzka(double NumbersOfPhases) : this(NumbersOfPhases, Constants.StandartNagruzka.StandartPower.Value1) // Конструктор с указанием числа фаз
+        { }
+
+        public Nagruzka(double NumbersOfPhases, double Power) : this(NumbersOfPhases, Power, Constants.StandartNagruzka.StandartCosf.Value1) // Конструктор с указанием числа фаз и мощности
+        { }
+
+        public Nagruzka(double NumbersOfPhases, double Power, double Cosphi) : this(NumbersOfPhases, Power, Cosphi, true) // Конструктор с указанием числа фаз, мощности и косинуса и началом в щите
+        { }
+        public Nagruzka(double NumbersOfPhases, double Power, double Cosphi, bool StartInBox) : this(NumbersOfPhases, Power, Cosphi, StartInBox, Start) // Конструктор с указанием числа фаз, мощности и косинуса, началом в щите
+        {
+            Microsoft.Office.Interop.Excel.Worksheet Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            this.Start = Worksheet.Name;
+        }
+        public Nagruzka(double NumbersOfPhases, double Power, double Cosphi, bool StartInBox, string Start) : this (NumbersOfPhases, Power, Cosphi, StartInBox, Start, Destenation) // Конструктор с указанием числа фаз, мощности и косинуса
+        {  }
+        public Nagruzka(double NumbersOfPhases, double Power, double Cosphi, bool StartInBox, string Start, string Destenation) // Конструктор с указанием числа фаз, мощности и косинуса
         {
             Microsoft.Office.Interop.Excel.Worksheet Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
             this.NumbersOfPhases = NumbersOfPhases;
             SelectNumberPhase();
             SelectVoltage();
-            this.Power = Constants.StandartNagruzka.StandartPower.Value1;
-            this.Cosphi = Constants.StandartNagruzka.StandartCosf.Value1;
-            this.StartInBox = true;
-            this.Start = Worksheet.Name;
+            this.Power = Power;
+            this.Cosphi = Cosphi;
+            this.StartInBox = StartInBox;
+            this.Start = Start;
+            this.Destenation = Destenation;
             CalculateCurrent();
         }
 
 
-
         
     }
-    /*   public Nagruzka() : this("Неизвестно") // Конструктор без параметров
-          {
-          }
-          public Nagruzka(string StandartNumbersOfPhases) : this(StandartNumbersOfPhases, "Неизвестно") // Конструктор с указанием только числа фаз
-          {
-          }
-          public Nagruzka(string StandartNumbersOfPhases, string Power) : this(Source, Power, "Неизвестно") // Конструктор c мощностью
-          {
-          }*/
-    /*  public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi) : this(Source, Power, Cosphi, "Неизвестно") // Конструктор с косинусом
-      {
-      }*/
-    /*   public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool StartInBox) : this(Source, Power, Cosphi, bool StartInBox, "Неизвестно") // Конструктор с указанием начала в щите
-       {
-       }*/
-    /*  public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool StartInBox, string Start) : this(Source, Power, Cosphi, bool StartInBox, string Start, "Неизвестно") // Конструктор с указанием начала нагрузки
-      {
-      }
-      public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool StartInBox, string Start, string Source) : this(Source, Power, Cosphi, bool StartInBox, string Start, string Source, "Неизвестно") // Конструктор с указанием конца нагрузки
-      {
-      }*/
     /* public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
      {
          this.StandartNumbersOfPhases = StandartNumbersOfPhases;
@@ -51,27 +45,6 @@
          this.Start = Start_load;
          this.Source = Source_load;
          this.TypeNetwork = TypeNetwork;
-     }
-
-     public Nagruzka()
-     {
-     }
-     /*  public Double Chek_double ( string s) //Проверяет передачу дробного числа с символом запятой, преобразует запятую в точку и проверяет возможность преобразования в Double
-{
-  char ch_find = ','; // Символ, который мы ищем для замены
-  char ch_change = '.'; // Символ, который на который мы заменяем
-  s = s.Replace(ch_find, ch_change); // Тут мы меняем символы
-  //Тут мы ловим возможну ошибку преобразования в Double
-  try 
-  {
-      return Convert.ToDouble(s);
-  }
-
-  catch (Exception ex) 
-  {
-     MessageBox.Show($"Исключение: {ex.Message}"); // Тут мы выдаем сообщение о возникновении исключения
-     s = s.Remove (s.Length); //Тут мы очищаем строку
-  }
-
-}*/
+     }*/
+   
 }
