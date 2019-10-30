@@ -2,18 +2,24 @@
 {
     public partial class Nagruzka
     {
-        public Nagruzka() // Конструктор по умолчанию
+        public Nagruzka() : this(Constants.StandartNagruzka.NumberPhases.Value1) //Конструктор по умолчанию
+        { }
+          public Nagruzka(double NumbersOfPhases) // Конструктор с указанием числа фаз
         {
             Microsoft.Office.Interop.Excel.Worksheet Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
-            NumbersOfPhases = Constants.StandartNagruzka.NumberPhases.Value1;
+            this.NumbersOfPhases = NumbersOfPhases;
             SelectNumberPhase();
             SelectVoltage();
-            Power = Constants.StandartNagruzka.StandartPower.Value1;
-            Cosphi = Constants.StandartNagruzka.StandartCosf.Value1;
-            StartInBox = true;
-            Start = Worksheet.Name;
+            this.Power = Constants.StandartNagruzka.StandartPower.Value1;
+            this.Cosphi = Constants.StandartNagruzka.StandartCosf.Value1;
+            this.StartInBox = true;
+            this.Start = Worksheet.Name;
             CalculateCurrent();
         }
+
+
+
+        
     }
     /*   public Nagruzka() : this("Неизвестно") // Конструктор без параметров
           {
