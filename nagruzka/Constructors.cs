@@ -6,10 +6,8 @@
         { }
           public Nagruzka(double NumbersOfPhases) : this(NumbersOfPhases, Constants.StandartNagruzka.StandartPower.Value1) // Конструктор с указанием числа фаз
         { }
-
         public Nagruzka(double NumbersOfPhases, double Power) : this(NumbersOfPhases, Power, Constants.StandartNagruzka.StandartCosf.Value1) // Конструктор с указанием числа фаз и мощности
         { }
-
         public Nagruzka(double NumbersOfPhases, double Power, double Cosphi) : this(NumbersOfPhases, Power, Cosphi, true) // Конструктор с указанием числа фаз, мощности и косинуса и началом в щите
         { }
         public Nagruzka(double NumbersOfPhases, double Power, double Cosphi, bool StartInBox) : this(NumbersOfPhases, Power, Cosphi, StartInBox, Start) // Конструктор с указанием числа фаз, мощности и косинуса, началом в щите
@@ -32,9 +30,6 @@
             this.Destenation = Destenation;
             CalculateCurrent();
         }
-
-
-        
     }
     /* public Nagruzka(string StandartNumbersOfPhases, string Power, string Cosphi, bool Start_load_in_box, string Start_load, string Source_load, string TypeNetwork) // Конструктор полный
      {
