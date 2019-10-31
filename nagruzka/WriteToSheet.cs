@@ -17,14 +17,29 @@ namespace circuit_generator
             }
             try
             {
-                Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = Convert.ToDouble(NumbersOfPhases);
+            NagruzkaList.Add(Constants.Fider.Row.Phase, this.NumbersOfPhases);
+            NagruzkaList.Add(Constants.Fider.Row.P, this.Power);
+            NagruzkaList.Add(Constants.Fider.Row.U, this.Voltage);
+            NagruzkaList.Add(Constants.Fider.Row.Cos, this.Cosphi);
+            NagruzkaList.Add(Constants.Fider.Row.I, this.Current);
+            NagruzkaList.Add(Constants.Fider.Row.Start, this.Start);    
+            NagruzkaList.Add(Constants.Fider.Row.Finish, this.Source);     
+            NagruzkaList.TrimExcess();
+            ICollection<int> keys = NagruzkaList.Keys;
+            foreach (int c in keys)
+            {
+                Worksheet.Cells[c, ActiveColuumn].Value = NagruzkaList[c];
+               // Console.WriteLine("User: {0}, Password: {1}", c, NagruzkaList[c]);
+            }
+               
+               /*  Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value = Convert.ToDouble(NumbersOfPhases);
                 Worksheet.Cells[Constants.Fider.Row.P, ActiveColuumn].Value = Convert.ToDouble(Power);
                 Worksheet.Cells[Constants.Fider.Row.U, ActiveColuumn].Value = Convert.ToDouble(Voltage);
                 Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Convert.ToDouble(Cosphi);
                 Worksheet.Cells[Constants.Fider.Row.I, ActiveColuumn].Value = Convert.ToDouble(Current);
                 Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
                 Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
-
+                */
                 var l1 = new List<int> { Constants.Fider.Row.Id, Constants.Fider.Row.Image, Constants.Fider.Row.Id, Constants.Fider.Row.Phase, Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.I, Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
                 foreach (int element in l1)
                 {

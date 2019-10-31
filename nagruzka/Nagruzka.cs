@@ -16,5 +16,7 @@
         protected string TypeNetwork1 { get; set; } // Тип сети
         protected string Type1 { get; set; } // Тип нагрузки промежуточная/конечная
         protected int ActiveColuumn { get; set; } // Номер столбца для нагрузки
-    }
+
+        SortedList<int, string> NagruzkaList = new SortedList<int, string>(); // Лист значений и соответствующих им строк записи в таблице
+        }
 }
