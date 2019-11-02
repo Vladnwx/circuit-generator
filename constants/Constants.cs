@@ -1,4 +1,6 @@
-﻿namespace circuit_generator
+﻿using System.Collections.Generic;
+
+namespace circuit_generator
 {
     public static class Constants
     {
@@ -143,40 +145,13 @@
         }
         public static class StandartNagruzka
         {
-            public static class StandartVoltage
-            {
-                public const double Value1 = 220D;
-                public const double Value2 = 380D;
-                public const double Value3 = 24D;
-                public const double Value4 = 12D;
-                public const double Value5 = 230D;
-                public const double Value6 = 400D;
-            }
-            public static class StandartCosf
-            {
-                public const double Value1 = 0.9D;
-                public const double Value2 = 0.95D;
-                public const double Value3 = 0.85D;
-                public const double Value4 = 0.8D;
-                public const double Value5 = 1D;
-            }
             public static class StandartNumbersOfPhases
             {
                 public const double Value1 = 1D;
                 public const double Value2 = 2D;
                 public const double Value3 = 3D;
+                public static readonly List<double> list = new List<double> { Value1, Value2, Value3 };
             }
-            public static class NumberPhases
-            {
-                public const double Value1 = 1D;
-                public const double Value2 = 2D;
-                public const double Value3 = 3D;
-                public const double Value4 = 123D;
-                public const double Value5 = 12D;
-                public const double Value6 = 23D;
-                public const double Value7 = 13D;
-            }
-
             public static class StandartPower
             {
                 public const double Value1 = 1D;
@@ -186,7 +161,42 @@
                 public const double Value5 = 3D;
                 public const double Value6 = 0.5D;
                 public const double Value7 = 0.1D;
+                public static readonly List<double> list = new List<double> { Value1, Value2, Value3, Value4, Value5, Value6, Value7 };
             }
+            public static class StandartVoltage
+            {
+                public const double Value1 = 220D;
+                public const double Value2 = 380D;
+                public const double Value3 = 24D;
+                public const double Value4 = 12D;
+                public const double Value5 = 230D;
+                public const double Value6 = 400D;
+                public static readonly List<double> list = new List<double> { Value1, Value2, Value3, Value4, Value5, Value6 };
+
+            }
+            public static class StandartCosf
+            {
+                public const double Value1 = 0.9D;
+                public const double Value2 = 0.95D;
+                public const double Value3 = 0.85D;
+                public const double Value4 = 0.8D;
+                public const double Value5 = 1D;
+                public static readonly List<double> list = new List<double> { Value1, Value2, Value3, Value4, Value5};
+            }
+           
+            public static class NumberPhases
+            {
+                public const double Value1 = 1D;
+                public const double Value2 = 2D;
+                public const double Value3 = 3D;
+                public const double Value4 = 123D;
+                public const double Value5 = 12D;
+                public const double Value6 = 23D;
+                public const double Value7 = 13D;
+                public static readonly List<double> list = new List<double> { Value1, Value2, Value3, Value4, Value5, Value6, Value7 };
+            }
+
+            
             public static class StandartHarakter
             {
                 public const string Value1 = "Светильники";
@@ -194,16 +204,23 @@
                 public const string Value3 = "Двигатель";
                 public const string Value4 = "Шкаф";
                 public const string Value5 = "Комплексная нагрузка";
+                public static readonly List<string> list = new List<string> { Value1, Value2, Value3, Value4, Value5};
+                // Характер нагрузки (двигатель, розетка, светильник, шкафчик), добавить рекомендации по ограничению одной группы освещения не более 10А. 
+                //Елси нагрузка комплексная то давать возможность ввести косинус. Если розетка, то давать ввести количество розеток. 
+                //Если светильники, то давать ввести количество светильников и мощность одного. 
+                //Если двигатель, то запрашивать данные об установленном выключаетел в шкафу управления двигателем.
             }
             public static class StandartTypeNetwork
             {
                 public const string Value1 = "трехфазная разводка с ответвлением в коробке пофазно";
                 public const string Value2 = "однофазная прямо от щита";
+                public static readonly List<string> list = new List<string> { Value1, Value2};
             }
             public static class StandartType
             {
                 public const string Value1 = "конечная";
                 public const string Value2 = "промежуточная";
+                public static readonly List<string> list = new List<string> { Value1, Value2};
             }
         }
 
@@ -211,6 +228,7 @@
         {
             public const string Value1 = "Передаваемые значения мощности, напряжения и косинуса должны быть числом";
             public const string Value2 = "Количество фаз неверно";
+            public static readonly List<string> list = new List<string> { Value1, Value2};
         }
 
         public static class Cable
@@ -219,26 +237,31 @@
             {
                 public const string Value1 = "медь";
                 public const string Value2 = "алюминий";
+                public static readonly List<string> list = new List<string> { Value1, Value2 };
             }
             public static class InsulationMaterial
             {
                 public const string Value1 = "ПВХ";
                 public const string Value2 = "ПЭ";
+                public static readonly List<string> list = new List<string> { Value1, Value2 };
             }
             public static class Environment
             {
                 public const string Value1 = "воздух";
                 public const string Value2 = "земля";
+                public static readonly List<string> list = new List<string> { Value1, Value2 };
             }
             public static class CurrentType
             {
                 public const string Value1 = "постоянный";
                 public const string Value2 = "переменный";
+                public static readonly List<string> list = new List<string> { Value1, Value2 };
             }
             public static class CoreConstruction
             {
                 public const string Value1 = "однопроволочный";
                 public const string Value2 = "многопроволочный";
+                public static readonly List<string> list = new List<string> { Value1, Value2 };
             }
         }
         public static class Avtomat
@@ -250,6 +273,7 @@
                 public const string Value2 = "2P";
                 public const string Value3 = "3P";
                 public const string Value4 = "4P";
+                public static readonly List<string> list = new List<string> { Value1, Value2, Value3, Value4 };
             }
             public static class HarType
             {
@@ -257,6 +281,7 @@
                 public const string Value2 = "B";
                 public const string Value3 = "C";
                 public const string Value4 = "D";
+                public static readonly List<string> list = new List<string> { Value1, Value2, Value3, Value4 };
             }
 
             public static class Type
@@ -266,6 +291,7 @@
                 public const string Value3 = "Выключатель нагрузки";
                 public const string Value4 = "Автоматический выключатель + Устройство защитного отключения";
                 public const string Value5 = "Дифференциальный автоматический выключатель";
+                public static readonly List<string> list = new List<string> { Value1, Value2, Value3, Value4, Value5 };
             }
             public static class Manufacturer
             {
@@ -274,11 +300,13 @@
                 public const string Value3 = "ABB";
                 public const string Value4 = "IEK";
                 public const string Value5 = "Legrand";
+                public static readonly List<string> list = new List<string> { Value1, Value2, Value3, Value4, Value5 };
             }
 
             public static class Series
             {
                 public const string Value1 = "IC60N";
+                public static readonly List<string> list = new List<string> { Value1 };
             }
             public static class Setpoint
             {
@@ -312,7 +340,8 @@
                 public const double Value28 = Value7 * 100;
                 public const double Value29 = Value8 * 100;
                 public const double Value30 = Value9 * 100;
-                
+                public static readonly List<double> list = new List<double> { Value1, Value2, Value3, Value4, Value5, Value6, Value7, Value8, Value9, Value10, Value11, Value12, Value13, Value14, Value15, Value16, Value17, Value18, Value19, Value20, Value21, Value22, Value23, Value24, Value25, Value26, Value27, Value28, Value29, Value30 };
+
             }
 
 

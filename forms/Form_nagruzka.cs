@@ -13,23 +13,30 @@ namespace circuit_generator
         {
            // Nagruzka nagruzka = new Nagruzka();
 
-            listBoxNumberOfPhases.DataSource = Nagruzka.GetNumbersOfPhases();
+            listBoxNumberOfPhases.DataSource = Constants.StandartNagruzka.StandartNumbersOfPhases.list;
+            comboBoxStandartPower.DataSource = Constants.StandartNagruzka.StandartPower.list;
+                       
 
-            //  comboBoxStandartPower.DataSource = Nagruzka.GetStandartPower();
-            //  comboBoxStandartVoltage.DataSource = Nagruzka.GetStandartVoltage();
-            //  listBoxType.DataSource = Nagruzka.GetType();
-            // listBoxHarakter.DataSource = Nagruzka.GetHarakter();
-            //  listBoxTypeNetwork.DataSource = Nagruzka.GetTypeNetwork();
-            // comboBoxStandartCosf.DataSource = Nagruzka.GetStandartCosf();
+            
+            comboBoxStandartCosf.DataSource = Constants.StandartNagruzka.StandartCosf.list;
+            comboBoxStandartVoltage.DataSource = Constants.StandartNagruzka.StandartVoltage.list;
+            checkBoxStartinbox.Checked = true;
+            comboBoxStart.Enabled = !checkBoxStartinbox.Checked;
 
-            //label1.Text = Convert.ToString(Convert.ToDouble(comboBoxStandartPower.Text.ToString()) * 1000 / Convert.ToDouble(comboBoxStandartVoltage.Text.ToString()));
+           // comboBoxStart.DataSource = ;
+
+            listBoxType.DataSource = Constants.StandartNagruzka.StandartType.list;
+            listBoxHarakter.DataSource = Constants.StandartNagruzka.StandartHarakter.list;
+            listBoxTypeNetwork.DataSource = Constants.StandartNagruzka.StandartTypeNetwork.list;
         }
         private void Form_nagruzka_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Dispose();
+           Dispose();
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxStartinbox_CheckedChanged(object sender, EventArgs e)
         {
+            comboBoxStart.Enabled = !checkBoxStartinbox.Checked;
+
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
                                                   // listBox3.Enabled = !checkBox.Checked;
             if (checkBox.Checked == true)
