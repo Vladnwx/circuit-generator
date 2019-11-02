@@ -11,8 +11,8 @@ namespace circuit_generator
             this.Worksheet.Cells[row, column].Font.Size = 10;
             this.Worksheet.Cells[row, column].Font.Name = "Arial";
             this.Worksheet.Cells[row, column].HorizontalAlignment = XlHAlign.xlHAlignCenter; // выравнивание по центру по горизонтали
-            Worksheet.Cells[row, column].VerticalAlignment = XlHAlign.xlHAlignCenter;
-            Worksheet.Cells[row, column].Borders.LineStyle = XlLineStyle.xlContinuous; //Тут нужно нарисовать все границы для ячеек
+            this.Worksheet.Cells[row, column].VerticalAlignment = XlHAlign.xlHAlignCenter;
+            this.Worksheet.Cells[row, column].Borders.LineStyle = XlLineStyle.xlContinuous; //Тут нужно нарисовать все границы для ячеек
             this.Worksheet.Cells[row, column].WrapText = true; // перенос текста
         }
         public void StandartFormat(int row, int column, int rowMerge, int columnMerge)

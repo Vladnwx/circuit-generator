@@ -18,7 +18,7 @@ namespace circuit_generator
                     NumberPhase = Constants.StandartNagruzka.NumberPhases.Value4;
                     break;
                 default:
-                    MessageBox.Show(text: "Количество фаз неверно");
+                    MessageBox.Show(Constants.Exeption.Value2);
                     NumberPhase = Constants.StandartNagruzka.NumberPhases.Value1;
                     break;
             }

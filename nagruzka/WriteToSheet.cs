@@ -7,7 +7,7 @@ namespace circuit_generator
 {
     public partial class Nagruzka
     {
-        public void WriteToSheet(string NumberOfPhases, string Power, string Voltage, string Cosphi, string Start, string Source) // Добавляет нагрузку на лист
+        public void WriteToSheet() // Добавляет нагрузку на лист
         {
             Microsoft.Office.Interop.Excel.Worksheet Worksheet = Globals.ThisAddIn.Application.ActiveSheet;
             int ActiveColuumn = Constants.Fider.Column.First;
@@ -17,13 +17,13 @@ namespace circuit_generator
             }
             try
             {
-            NagruzkaList.Add(Constants.Fider.Row.Phase, this.NumbersOfPhases);
-            NagruzkaList.Add(Constants.Fider.Row.P, this.Power);
-            NagruzkaList.Add(Constants.Fider.Row.U, this.Voltage);
-            NagruzkaList.Add(Constants.Fider.Row.Cos, this.Cosphi);
-            NagruzkaList.Add(Constants.Fider.Row.I, this.Current);
-            NagruzkaList.Add(Constants.Fider.Row.Start, this.Start);    
-            NagruzkaList.Add(Constants.Fider.Row.Finish, this.Source);     
+            NagruzkaList.Add(Constants.Fider.Row.Phase, Convert.ToString(NumbersOfPhases));
+            NagruzkaList.Add(Constants.Fider.Row.P, Convert.ToString(Power));
+            NagruzkaList.Add(Constants.Fider.Row.U, Convert.ToString(Voltage));
+            NagruzkaList.Add(Constants.Fider.Row.Cos, Convert.ToString(Cosphi));
+            NagruzkaList.Add(Constants.Fider.Row.I, Convert.ToString(Current));
+            NagruzkaList.Add(Constants.Fider.Row.Start, Convert.ToString(Start));    
+            NagruzkaList.Add(Constants.Fider.Row.Finish, Convert.ToString(Destenation));     
             NagruzkaList.TrimExcess();
             ICollection<int> keys = NagruzkaList.Keys;
             foreach (int c in keys)
@@ -38,7 +38,7 @@ namespace circuit_generator
                 Worksheet.Cells[Constants.Fider.Row.Cos, ActiveColuumn].Value = Convert.ToDouble(Cosphi);
                 Worksheet.Cells[Constants.Fider.Row.I, ActiveColuumn].Value = Convert.ToDouble(Current);
                 Worksheet.Cells[Constants.Fider.Row.Start, ActiveColuumn].Value = Start;
-                Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Source;
+                Worksheet.Cells[Constants.Fider.Row.Finish, ActiveColuumn].Value = Desstenation;
                 */
                 var l1 = new List<int> { Constants.Fider.Row.Id, Constants.Fider.Row.Image, Constants.Fider.Row.Id, Constants.Fider.Row.Phase, Constants.Fider.Row.P, Constants.Fider.Row.U, Constants.Fider.Row.Cos, Constants.Fider.Row.I, Constants.Fider.Row.Start, Constants.Fider.Row.Finish };
                 foreach (int element in l1)
@@ -50,7 +50,7 @@ namespace circuit_generator
             }
             catch (FormatException)
             {
-                MessageBox.Show("Передаваемые значения мощности, напряжения и косинуса должны быть числом");
+                MessageBox.Show(Constants.Exeption.Value1);
             }
             catch (Exception ex)
             {

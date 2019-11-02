@@ -11,9 +11,10 @@ namespace circuit_generator
         }
         protected void Form_nagruzka_Load(object sender, EventArgs e)
         {
-            new Nagruzka();
+           // Nagruzka nagruzka = new Nagruzka();
 
-            // listBoxNumberOfPhases.DataSource = Nagruzka.GetNumberOfPhases();
+            listBoxNumberOfPhases.DataSource = Nagruzka.GetNumbersOfPhases();
+
             //  comboBoxStandartPower.DataSource = Nagruzka.GetStandartPower();
             //  comboBoxStandartVoltage.DataSource = Nagruzka.GetStandartVoltage();
             //  listBoxType.DataSource = Nagruzka.GetType();
@@ -56,13 +57,10 @@ namespace circuit_generator
         {
             //Nagruzka n1 = new Nagruzka();
 
-            new Nagruzka().WriteToSheet(
-                NumberOfPhases: listBoxNumberOfPhases.Text,
-                Power: comboBoxStandartPower.Text,
-                Voltage: comboBoxStandartVoltage.Text,
-                Cosphi: comboBoxStandartCosf.Text,
-                Start: comboBoxStart.Text,
-                Source: comboBoxSource.Text);
+            Nagruzka n1 = new Nagruzka(NumbersOfPhases: listBoxNumberOfPhases.Text, Power: comboBoxStandartPower.Text, Cosphi: comboBoxStandartCosf.Text, StartInBox: false, Start: comboBoxStart.Text, Destenation: comboBoxSource.Text);
+            n1.WriteToSheet();
+            
+                //Voltage: comboBoxStandartVoltage.Text,
             Dispose();
 
         }

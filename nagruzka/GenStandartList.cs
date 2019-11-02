@@ -6,9 +6,9 @@ namespace circuit_generator
     {
        
         private static readonly List<double> StandartNumbersOfPhases = new List<double>() { Constants.StandartNagruzka.StandartNumbersOfPhases.Value1, Constants.StandartNagruzka.StandartNumbersOfPhases.Value2, Constants.StandartNagruzka.StandartNumbersOfPhases.Value3 }; //число фаз
-                                                                                                                                                                                                                                                                               //private static readonly List<string> NumberPhases = new List<string>() { "L1", "L2", "L3", "L1 L2 L3" }; // номер фазы
+ //private static readonly List<string> NumberPhases = new List<string>() { "L1", "L2", "L3", "L1 L2 L3" }; // номер фазы
 
-        public static List<double> GetNumberOfPhases()
+        public static List<double> GetNumbersOfPhases()
         {
             return StandartNumbersOfPhases;
         }

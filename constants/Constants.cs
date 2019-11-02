@@ -141,10 +141,9 @@
                 }
             }
         }
-
-        public partial class StandartNagruzka
+        public static class StandartNagruzka
         {
-            public class StandartVoltage
+            public static class StandartVoltage
             {
                 public const double Value1 = 220D;
                 public const double Value2 = 380D;
@@ -153,7 +152,7 @@
                 public const double Value5 = 230D;
                 public const double Value6 = 400D;
             }
-            public class StandartCosf
+            public static class StandartCosf
             {
                 public const double Value1 = 0.9D;
                 public const double Value2 = 0.95D;
@@ -161,13 +160,13 @@
                 public const double Value4 = 0.8D;
                 public const double Value5 = 1D;
             }
-            public class StandartNumbersOfPhases
+            public static class StandartNumbersOfPhases
             {
                 public const double Value1 = 1D;
                 public const double Value2 = 2D;
                 public const double Value3 = 3D;
             }
-            public class NumberPhases
+            public static class NumberPhases
             {
                 public const double Value1 = 1D;
                 public const double Value2 = 2D;
@@ -178,7 +177,7 @@
                 public const double Value7 = 13D;
             }
 
-            public class StandartPower
+            public static class StandartPower
             {
                 public const double Value1 = 1D;
                 public const double Value2 = 1.5D;
@@ -188,7 +187,7 @@
                 public const double Value6 = 0.5D;
                 public const double Value7 = 0.1D;
             }
-            public class StandartHarakter
+            public static class StandartHarakter
             {
                 public const string Value1 = "Светильники";
                 public const string Value2 = "Розетки";
@@ -196,31 +195,132 @@
                 public const string Value4 = "Шкаф";
                 public const string Value5 = "Комплексная нагрузка";
             }
-            public class StandartTypeNetwork
+            public static class StandartTypeNetwork
             {
                 public const string Value1 = "трехфазная разводка с ответвлением в коробке пофазно";
                 public const string Value2 = "однофазная прямо от щита";
             }
-            public class StandartType
+            public static class StandartType
             {
                 public const string Value1 = "конечная";
                 public const string Value2 = "промежуточная";
             }
         }
 
+        public static class Exeption
+        {
+            public const string Value1 = "Передаваемые значения мощности, напряжения и косинуса должны быть числом";
+            public const string Value2 = "Количество фаз неверно";
+        }
+
+        public static class Cable
+        {
+            public static class MetalType
+            {
+                public const string Value1 = "медь";
+                public const string Value2 = "алюминий";
+            }
+            public static class InsulationMaterial
+            {
+                public const string Value1 = "ПВХ";
+                public const string Value2 = "ПЭ";
+            }
+            public static class Environment
+            {
+                public const string Value1 = "воздух";
+                public const string Value2 = "земля";
+            }
+            public static class CurrentType
+            {
+                public const string Value1 = "постоянный";
+                public const string Value2 = "переменный";
+            }
+            public static class CoreConstruction
+            {
+                public const string Value1 = "однопроволочный";
+                public const string Value2 = "многопроволочный";
+            }
+        }
+        public static class Avtomat
+
+        {
+            public static class Polus
+            {
+                public const string Value1 = "1P";
+                public const string Value2 = "2P";
+                public const string Value3 = "3P";
+                public const string Value4 = "4P";
+            }
+            public static class HarType
+            {
+                public const string Value1 = "A";
+                public const string Value2 = "B";
+                public const string Value3 = "C";
+                public const string Value4 = "D";
+            }
+
+            public static class Type
+            {
+                public const string Value1 = "Автоматический выключатель";
+                public const string Value2 = "Устройство защитного отключения";
+                public const string Value3 = "Выключатель нагрузки";
+                public const string Value4 = "Автоматический выключатель + Устройство защитного отключения";
+                public const string Value5 = "Дифференциальный автоматический выключатель";
+            }
+            public static class Manufacturer
+            {
+                public const string Value1 = "Schneider Electric";
+                public const string Value2 = "Siemens";
+                public const string Value3 = "ABB";
+                public const string Value4 = "IEK";
+                public const string Value5 = "Legrand";
+            }
+
+            public static class Series
+            {
+                public const string Value1 = "IC60N";
+            }
+            public static class Setpoint
+            {
+                public const double Value1 = 6;
+                public const double Value2 = 10;
+                public const double Value3 = 16;
+                public const double Value4 = 20;
+                public const double Value5 = 25;
+                public const double Value6 = 32;
+                public const double Value7 = 40;
+                public const double Value8 = 50;
+                public const double Value9 = 63;
+                public const double Value10 = 80;
+                public const double Value11 = Value2*10;
+                public const double Value12 = 125;
+                public const double Value13 = Value3 * 10;
+                public const double Value14 = Value4 * 10;
+                public const double Value15 = Value5 * 10;
+                public const double Value16 = 315;
+                public const double Value17 = 355;
+                public const double Value18 = Value7 * 10;
+                public const double Value19 = Value8 * 10;
+                public const double Value20 = Value9 * 10;
+                public const double Value21 = Value10 * 10;
+                public const double Value22 = Value2 * 100;
+                public const double Value23 = 1200;
+                public const double Value24 = Value3 * 100;
+                public const double Value25 = Value4 * 100;
+                public const double Value26 = Value5 * 100;
+                public const double Value27 = Value6 * 100;
+                public const double Value28 = Value7 * 100;
+                public const double Value29 = Value8 * 100;
+                public const double Value30 = Value9 * 100;
+                
+            }
 
 
 
-
+        }
 
 
     }
 
-    public partial class Cable
-    {
-    }
-    public partial class Avtomat
-    {
-    }
 
 }

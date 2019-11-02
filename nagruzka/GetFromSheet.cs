@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace circuit_generator
@@ -11,15 +12,15 @@ namespace circuit_generator
             this.ActiveColuumn = Globals.ThisAddIn.Application.ActiveCell.Column;
             try
             {
-            //StandartNumbersOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
-            NagruzkaList.Add(Constants.Fider.Row.Phase, this.NumbersOfPhases);
-            NagruzkaList.Add(Constants.Fider.Row.P, this.Power);
-            NagruzkaList.Add(Constants.Fider.Row.U, this.Voltage);
-            NagruzkaList.Add(Constants.Fider.Row.Cos, this.Cosphi);
-            NagruzkaList.Add(Constants.Fider.Row.I, this.Current);
-            NagruzkaList.Add(Constants.Fider.Row.Start, this.Start);    
-            NagruzkaList.Add(Constants.Fider.Row.Finish, this.Source);     
-            NagruzkaList.TrimExcess();
+                //StandartNumbersOfPhases = Worksheet.Cells[Constants.Fider.Row.Phase, ActiveColuumn].Value;
+                NagruzkaList.Add(Constants.Fider.Row.Phase, Convert.ToString(NumbersOfPhases));
+                NagruzkaList.Add(Constants.Fider.Row.P, Convert.ToString(Power));
+                NagruzkaList.Add(Constants.Fider.Row.U, Convert.ToString(Voltage));
+                NagruzkaList.Add(Constants.Fider.Row.Cos, Convert.ToString(Cosphi));
+                NagruzkaList.Add(Constants.Fider.Row.I, Convert.ToString(Current));
+                NagruzkaList.Add(Constants.Fider.Row.Start, Convert.ToString(Start));
+                NagruzkaList.Add(Constants.Fider.Row.Finish, Convert.ToString(Destenation));
+                NagruzkaList.TrimExcess();
             ICollection<int> keys = NagruzkaList.Keys;
             foreach (int c in keys)
             {
@@ -31,7 +32,7 @@ namespace circuit_generator
 
                 Start = this.Worksheet.Cells[Constants.Fider.Row.Start, this.ActiveColuumn].Value;
 
-                Source = this.Worksheet.Cells[Constants.Fider.Row.Finish, this.ActiveColuumn].Value;
+                Desstenation = this.Worksheet.Cells[Constants.Fider.Row.Finish, this.ActiveColuumn].Value;
            */
             }
 

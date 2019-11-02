@@ -1,4 +1,6 @@
-﻿namespace circuit_generator
+﻿using System.Collections.Generic;
+
+namespace circuit_generator
 {
     public partial class Nagruzka
     {
@@ -11,12 +13,12 @@
         protected double Current { get; set; } // Косинус нагрузки , добавить проверку косинуса (он не может быть больше+-1)
         protected bool StartInBox { get; set; } // Начало нагрузки в щите или ответвление от фидера, добавить проверку, что при отсутствии фидера невозможно поставить нагрузку как начинающуюся не от щита
         protected string Start { get; set; } // начало нагрузки
-        protected string Source { get; set; } // Местоположение нагрузки
+        protected string Destenation { get; set; } // Местоположение нагрузки
         protected string Harakter1 { get; set; } // Характер нагрузки
         protected string TypeNetwork1 { get; set; } // Тип сети
         protected string Type1 { get; set; } // Тип нагрузки промежуточная/конечная
         protected int ActiveColuumn { get; set; } // Номер столбца для нагрузки
 
-        SortedList<int, string> NagruzkaList = new SortedList<int, string>(); // Лист значений и соответствующих им строк записи в таблице
+        protected SortedList<int, string> NagruzkaList = new SortedList<int, string>(); // Лист значений и соответствующих им строк записи в таблице
         }
 }
