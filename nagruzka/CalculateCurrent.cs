@@ -11,12 +11,10 @@ namespace circuit_generator
             {
                 Current = (Power * 1000) / (1.73D * Voltage * Cosphi * NumbersOfPhases);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

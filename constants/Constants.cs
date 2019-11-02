@@ -98,17 +98,17 @@ namespace circuit_generator
                 public const string PhaseValue = "Распределение по фазам";
                 public const int Id = Phase + 1; // Номер строки, в которую пишется обозначение фидера на планах расположения
                 public const string IdValue = "Номер по плану";
-                public const int U = Id + 1; // Номер строки, в которую пишется выбранное напряжение на фидере
-                public const string UValue = "U, В";
-                public const int P = U + 1; // Номер строки, в которую пишется мощность на фидере, кВт
+                public const int Voltage = Id + 1; // Номер строки, в которую пишется выбранное напряжение на фидере
+                public const string UValue = "Voltage, В";
+                public const int Power = Voltage + 1; // Номер строки, в которую пишется мощность на фидере, кВт
                 public const string PValue = "Ррасч., кВт";
-                public const int Cos = P + 1; // Номер строки, в которую пишется cos(fi) на фидере
+                public const int Cosphi = Power + 1; // Номер строки, в которую пишется cos(fi) на фидере
                 public const string CosValue = "cos f";
-                public const int I = Cos + 1; // Номер строки, в которую пишется Ток на фидере
-                public const string IValue = "Ток Iрасч., А";
-                public const int Name_potr = I + 1; // Номер строки, в которую пишется наименование потребителя фидере
-                public const string Name_potrValue = "Наименование потребителя";
-                public const int Lenght = Name_potr + 4; // Номер строки, в которую пишется длина фидера
+                public const int Current = Cosphi + 1; // Номер строки, в которую пишется Ток на фидере
+                public const string CurrentValue = "Ток Iрасч., А";
+                public const int NamePotr = Current + 1; // Номер строки, в которую пишется наименование потребителя фидере
+                public const string NamePotrValue = "Наименование потребителя";
+                public const int Lenght = NamePotr + 4; // Номер строки, в которую пишется длина фидера
                 public const string LenghtValue = "Длинна кабельной трассы, м.";
                 public const int Poteri = Lenght + 2; // Номер строки, в которую пишется потери фидера
                 public const string PoteriValue = "Потери, %";
@@ -116,22 +116,29 @@ namespace circuit_generator
                 public const string CabelValue = "кабель, мм.кв.";
                 public const int Start = Cabel + 6; // Номер строки, в которую пишется начало фидера
                 public const string StartValue = "Начало кабельной линии";
-                public const int Finish = Start + 1; // Номер строки, в которую пишется конец фидера
+                public const int Destenation = Start + 1; // Номер строки, в которую пишется конец фидера
                 public const string FinishValue = "Конец кабельной линии";
-                public const int Cable_marka = Finish + 2; // Номер строки, в которую пишется марка выбранного кабеля фидера
-                public const string Cable_markaValue = "марка кабеля";
-                public const int Cable_metal_type = Cable_marka + 2; // Номер строки, в которую пишется материал жил выбранного кабеля фидера
-                public const string Cable_metal_typeValue = "CU / Al";
-                public const int Prokladka_type = Cable_metal_type + 2; // Номер строки, в которую пишется способ прокладки кабеля фидера
-                public const string Prokladka_typeValue = "Способ прокладки";
-                public const int Cabel_jila = Prokladka_type + 2; // Номер строки, в которую пишется жильность выбранного кабеля фидера
-                public const string Cabel_jilaValue = "Жильность";
-                public const int Truba_type = Cabel_jila + 2; // Номер строки, в которую пишется тип трубы кабеля фидера
-                public const string Truba_typeValue = "Тип трубы";
-                public const int Truba_lenght = Truba_type + 2; // Номер строки, в которую пишется длина трубы кабеля фидера
-                public const string Truba_lenghtValue = "Длинна трубы, м";
-                public const int Truba_diam = Truba_lenght + 2; // Номер строки, в которую пишется диаметр трубы кабеля фидера
-                public const string Truba_diamValue = "Диаметр трубы";
+                public const int CableMarka = Destenation + 2; // Номер строки, в которую пишется марка выбранного кабеля фидера
+                public const string CableMarkaValue = "марка кабеля";
+                public const int CableMetalType = CableMarka + 2; // Номер строки, в которую пишется материал жил выбранного кабеля фидера
+                public const string CableMetalTypeValue = "CU / Al";
+                public const int ProkladkaType = CableMetalType + 2; // Номер строки, в которую пишется способ прокладки кабеля фидера
+                public const string ProkladkaTypeValue = "Способ прокладки";
+                public const int CabelJila = ProkladkaType + 2; // Номер строки, в которую пишется жильность выбранного кабеля фидера
+                public const string CabelJilaValue = "Жильность";
+                public const int TrubaType = CabelJila + 2; // Номер строки, в которую пишется тип трубы кабеля фидера
+                public const string TrubaTypeValue = "Тип трубы";
+                public const int TrubaLenght = TrubaType + 2; // Номер строки, в которую пишется длина трубы кабеля фидера
+                public const string TrubaLenghtValue = "Длинна трубы, м";
+                public const int TrubaDiam = TrubaLenght + 2; // Номер строки, в которую пишется диаметр трубы кабеля фидера
+                public const string TrubaDiamValue = "Диаметр трубы";
+
+                public static readonly List<int> listInt = new List<int> { First, Last, Info, Image, Phase, Id, Voltage, Power, Cosphi, Current, NamePotr, Lenght, Cabel, Start, Destenation, CableMarka, CableMetalType, ProkladkaType, CabelJila, TrubaType, TrubaLenght, TrubaDiam};
+
+                public static readonly List<string> listString = new List<string> {  InfoValue1, InfoValue2, ImageValue, PhaseValue, IdValue, UValue, PValue, CosValue, CurrentValue, NamePotrValue, LenghtValue, CabelValue, StartValue, FinishValue, CableMarkaValue, CableMetalTypeValue, ProkladkaTypeValue, CabelJilaValue, TrubaTypeValue, TrubaLenghtValue, TrubaDiamValue };
+
+
+
                 public static class QF
                 {
                     public const int First = Tabl.Left.Row.Start + 11; // Номер строки, в которую пишется нумерация автоматов

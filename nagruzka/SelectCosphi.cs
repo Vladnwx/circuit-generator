@@ -6,7 +6,7 @@ namespace circuit_generator
     {
         private void SelectCosphi() // Выбирает cos phi
         {
-            switch (Harakter1)
+            switch (Harakter)
             {
                 case Constants.StandartNagruzka.StandartHarakter.Value1:
                     Cosphi = Constants.StandartNagruzka.StandartCosf.Value2;

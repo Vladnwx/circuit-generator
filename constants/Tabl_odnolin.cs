@@ -4,7 +4,7 @@ using tlr = circuit_generator.Constants.Tabl.Left.Row;
 
 namespace circuit_generator
 {
-    class Tabl_odnolin  // Таблица для рисования схемы
+    public class Tabl_odnolin  // Таблица для рисования схемы
     {
         Microsoft.Office.Interop.Excel.Worksheet Worksheet { get; set; } // Таблица над которрой мы выполняем действия
                                                                          // public Autodesk.AutoCAD.ApplicationServices.Application Acad { get; set; } // Таблица над которрой мы выполняем действия
@@ -64,27 +64,27 @@ namespace circuit_generator
             new FormatCell().MergeFormat(fr.Phase, tlc.Start, 0, 1, fr.PhaseValue);
             Worksheet.Cells[fr.Phase, tlc.Start].RowHeight = 30; // Высота столбца
             new FormatCell().MergeFormat(fr.Id, tlc.Start, 0, 1, fr.IdValue);
-            new FormatCell().MergeFormat(fr.U, tlc.Start, 0, 1, fr.UValue);
-            new FormatCell().MergeFormat(fr.P, tlc.Start, 0, 1, fr.PValue);
-            new FormatCell().MergeFormat(fr.Cos, tlc.Start, 0, 1, fr.CosValue);
-            new FormatCell().MergeFormat(fr.I, tlc.Start, 0, 1, fr.IValue);
-            new FormatCell().MergeFormat(fr.Name_potr, tlc.Start, 0, 1, fr.Name_potrValue);
-            Worksheet.Cells[fr.Name_potr, tlc.Start].RowHeight = 100; // Высота столбца
+            new FormatCell().MergeFormat(fr.Voltage, tlc.Start, 0, 1, fr.UValue);
+            new FormatCell().MergeFormat(fr.Power, tlc.Start, 0, 1, fr.PValue);
+            new FormatCell().MergeFormat(fr.Cosphi, tlc.Start, 0, 1, fr.CosValue);
+            new FormatCell().MergeFormat(fr.Current, tlc.Start, 0, 1, fr.CurrentValue);
+            new FormatCell().MergeFormat(fr.NamePotr, tlc.Start, 0, 1, fr.NamePotrValue);
+            Worksheet.Cells[fr.NamePotr, tlc.Start].RowHeight = 100; // Высота столбца
             new FormatCell().MergeFormat(fr.Lenght, tlc.Start, 0, 1, fr.LenghtValue);
             Worksheet.Cells[fr.Lenght, tlc.Start].RowHeight = 30; // Высота столбца
             new FormatCell().MergeFormat(fr.Poteri, tlc.Start, 0, 1, fr.PoteriValue);
             new FormatCell().MergeFormat(fr.Cabel, tlc.Start, 0, 1, fr.CabelValue);
             new FormatCell().MergeFormat(fr.Start, tlc.Start, 0, 1, fr.StartValue);
             Worksheet.Cells[fr.Start, tlc.Start].RowHeight = 30; // Высота столбца
-            new FormatCell().MergeFormat(fr.Finish, tlc.Start, 0, 1, fr.FinishValue);
-            Worksheet.Cells[fr.Finish, tlc.Start].RowHeight = 30; // Высота столбца
-            new FormatCell().MergeFormat(fr.Cable_marka, tlc.Start, 0, 1, fr.Cable_markaValue);
-            new FormatCell().MergeFormat(fr.Cable_metal_type, tlc.Start, 0, 1, fr.Cable_metal_typeValue);
-            new FormatCell().MergeFormat(fr.Prokladka_type, tlc.Start, 0, 1, fr.Prokladka_typeValue);
-            new FormatCell().MergeFormat(fr.Cabel_jila, tlc.Start, 0, 1, fr.Cabel_jilaValue);
-            new FormatCell().MergeFormat(fr.Truba_type, tlc.Start, 0, 1, fr.Truba_typeValue);
-            new FormatCell().MergeFormat(fr.Truba_lenght, tlc.Start, 0, 1, fr.Truba_lenghtValue);
-            new FormatCell().MergeFormat(fr.Truba_diam, tlc.Start, 0, 1, fr.Truba_diamValue);
+            new FormatCell().MergeFormat(fr.Destenation, tlc.Start, 0, 1, fr.FinishValue);
+            Worksheet.Cells[fr.Destenation, tlc.Start].RowHeight = 30; // Высота столбца
+            new FormatCell().MergeFormat(fr.CableMarka, tlc.Start, 0, 1, fr.CableMarkaValue);
+            new FormatCell().MergeFormat(fr.CableMetalType, tlc.Start, 0, 1, fr.CableMetalTypeValue);
+            new FormatCell().MergeFormat(fr.ProkladkaType, tlc.Start, 0, 1, fr.ProkladkaTypeValue);
+            new FormatCell().MergeFormat(fr.CabelJila, tlc.Start, 0, 1, fr.CabelJilaValue);
+            new FormatCell().MergeFormat(fr.TrubaType, tlc.Start, 0, 1, fr.TrubaTypeValue);
+            new FormatCell().MergeFormat(fr.TrubaLenght, tlc.Start, 0, 1, fr.TrubaLenghtValue);
+            new FormatCell().MergeFormat(fr.TrubaDiam, tlc.Start, 0, 1, fr.TrubaDiamValue);
         }
         private void DrawVvod() // Таблица ввода
         {
