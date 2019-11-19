@@ -2,4 +2,4 @@ os: windows
 language: csharp
 solution: circuit generator.sln
 mono: none
-dotnet: - latest
+dotnet: 3.0
