@@ -19,7 +19,7 @@ namespace circuit_generator
         public string Type { get; set; } // Тип нагрузки промежуточная/конечная
         public int ActiveColuumn { get; set; } // Номер столбца для нагрузки
 
-        public SortedList<int, string> NagruzkaList = new SortedList<int, string>(); // Лист значений и соответствующих им строк записи в таблице 
+       // public SortedList<int, string> NagruzkaList = new SortedList<int, string>(); // Лист значений и соответствующих им строк записи в таблице 
         public SortedList<int, string> listsorted = new SortedList<int, string>(); // Лист значений и соответствующих им строк записи в таблице
         
 
