@@ -1,4 +1,4 @@
 language: csharp
-solution: circuit generator.sln
 mono: none
 dotnet: 3.0
+solution: circuit generator.sln
